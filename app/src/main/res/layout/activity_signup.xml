@@ -18,74 +18,79 @@
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="40sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         />
 
     <EditText
         android:id="@+id/storeName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:hint="Store Name"
-        android:textSize="20sp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"/>
+        android:layout_marginTop="40dp"
+        android:background="@drawable/borderradius"
+        android:hint="Store Name"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:hint="Email"
-        android:textSize="20sp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/borderradius"
+        android:hint="Email"
         android:padding="10dp"
-        />
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/phone_no"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:hint="Phone No"
-        android:textSize="20sp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/borderradius"
+        android:hint="Phone No"
         android:padding="10dp"
-        />
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:hint="Password"
-        android:textSize="20sp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/borderradius"
+        android:hint="Password"
         android:padding="10dp"
-        />
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/confirm_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:hint="Confirm Password"
-        android:textSize="20sp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/borderradius"
+        android:hint="Confirm Password"
         android:padding="10dp"
-        />
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/createA"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="#0080D0"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonradius"
         android:text="Create Account"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
 </LinearLayout>

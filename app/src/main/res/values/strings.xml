@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Bangki Book</string>
     <string name="bangki_book">Bangki Book</string>
+    <string name="new_customer">New Customer</string>
+    <string name="name">Name</string>
+    <string name="student_id">Student ID</string>
+    <string name="email">Email</string>
+    <string name="phone_no">Phone No.</string>
 </resources>
