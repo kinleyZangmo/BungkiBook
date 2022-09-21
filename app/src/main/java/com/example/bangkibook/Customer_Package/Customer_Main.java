@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.bangkibook.R;
+
 import java.sql.Array;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class Customer_Main extends AppCompatActivity {
 
     //    Button button;
     RecyclerView rcv;
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.customerl_list);
 //        button =findViewById(R.id.btn);
         rcv = (RecyclerView) findViewById(R.id.recview);
         rcv.setLayoutManager(new LinearLayoutManager(this));
