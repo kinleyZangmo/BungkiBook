@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BangkiBook</string>
+    <string name="app_name">Bangki Book</string>
+    <string name="bangki_book">Bangki Book</string>
 </resources>
