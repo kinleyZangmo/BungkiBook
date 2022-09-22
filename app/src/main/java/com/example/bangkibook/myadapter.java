@@ -1,4 +1,4 @@
-package com.example.bangkibook.Customer_Package;
+package com.example.bangkibook;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,8 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.bangkibook.R;
 
 import java.util.ArrayList;
 

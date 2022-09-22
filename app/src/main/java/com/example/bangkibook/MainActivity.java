@@ -1,5 +1,4 @@
 package com.example.bangkibook;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,11 +14,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginClick(View view) {
-        // Intent intentLogin = new Intent(this, Login.class)
-        // will be added with dechens code
+         Intent intentLogin = new Intent(this, Customer_Main.class);
+         startActivity(intentLogin);
     }
 
-    // To
     public void signupClick(View view) {
 
         Intent intentSignup = new Intent(this, signup.class);

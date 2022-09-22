@@ -1,4 +1,4 @@
-package com.example.bangkibook.Customer_Package;
+package com.example.bangkibook;
 
 public class Model
 {

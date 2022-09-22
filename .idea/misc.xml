@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/Apps/BangkiBook/app/src/main/res/drawable/borderradius.xml" value="0.203" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/Apps/BangkiBook/app/src/main/res/drawable/buttonradius.xml" value="0.203" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/Apps/BangkiBook/app/src/main/res/layout/activity_add_customers.xml" value="0.264" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/Apps/BangkiBook/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/Apps/BangkiBook/app/src/main/res/layout/activity_signup.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/drawable-v24/customer_rounded_border.xml" value="0.101" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/drawable/borderradius.xml" value="0.101" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/drawable/buttonradius.xml" value="0.101" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/activity_add_customers.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/activity_customerl_list.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/activity_hello.xml" value="0.2740740740740741" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/activity_signup.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/customerl_list.xml" value="0.18046875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/singlerow.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/BangkiBook/app/src/main/res/layout/testt.xml" value="0.23052536231884058" />
       </map>
     </option>
   </component>
