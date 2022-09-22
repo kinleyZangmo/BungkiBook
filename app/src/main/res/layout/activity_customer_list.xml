@@ -44,15 +44,17 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="addCustomer"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/buttons"
+        android:onClick="addCustomer"
         android:src="@drawable/ic_baseline_person_add_24"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:tint="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:tint="@android:color/white"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
