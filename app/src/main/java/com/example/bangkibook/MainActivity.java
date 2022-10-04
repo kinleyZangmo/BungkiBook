@@ -24,4 +24,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentSignup);
         // intent takes to signup activity
     }
+
+
 }

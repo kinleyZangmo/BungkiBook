@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#050034"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".signup"
     >
 
     <TextView
@@ -22,7 +22,7 @@
         />
 
     <EditText
-        android:id="@+id/storeName"
+        android:id="@+id/store_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="30dp"
@@ -91,6 +91,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/buttonradius"
         android:text="Create Account"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:onClick="Register"/>
 
 </LinearLayout>
