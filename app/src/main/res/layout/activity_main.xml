@@ -46,7 +46,8 @@
         android:padding="10dp"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/user_password"
@@ -94,6 +95,13 @@
         android:onClick="signupClick"
         android:text="Sign Up"
         android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

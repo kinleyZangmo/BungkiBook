@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
@@ -80,41 +82,69 @@ public class signup extends AppCompatActivity {
                     confirmPassword.requestFocus();
                 }else{
                     //If all the fields are filled and valid
-                    Toast.makeText(signup.this, "Account Created", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(signup.this, "Account Created", Toast.LENGTH_LONG).show();
                     registerUser(Store_Name,Store_Email,Store_PhoneNo,Store_Password);
                 }
             }
         });
-
     }
 
     private void registerUser(String store_name, String store_email, String store_phoneNo, String store_password) {
         //FirebaseAuth(): The entry point of the Firebase Authentication SDK, obtain an instance of this class by calling getinstance().
         // Then sign up or sign in or register a user with one of the methods
-
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        //when user creation is successful
+
+        //1.Create user profile
         auth.createUserWithEmailAndPassword(store_email,store_password).addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(signup.this, "User Registered Successfully", Toast.LENGTH_SHORT).show();
                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                    //send email verification
-                    firebaseUser.sendEmailVerification();
+                    //2.Entering user data into realtime database : Firebase
+                    ReadWriteUserDetails WriteUserDetails = new ReadWriteUserDetails(store_name,store_email,store_phoneNo,store_password);
 
-                    //Open Customer Activity (our main page)
-                    Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
+                    //Extracting user reference from Database for "Registered Users"
+                    //To read or write data from database you need an instance of DatabaseReference
+                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
 
-                    //removing previous activities to avoid backstack
-                    //To prevent user from returning back to sign up activity on pressing back button after signup
-                    registered.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(registered);
-                    finish(); //to close signup activity
+                    referenceProfile.child(firebaseUser.getUid()).setValue(WriteUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                                 //when value of data is successfully stored in database
+                           if(task.isSuccessful()){
+                               //send email verification
+                               firebaseUser.sendEmailVerification();
+
+                               Toast.makeText(signup.this, "User Registered Successfully. Please verify your email", Toast.LENGTH_SHORT).show();
+
+                               //Open Customer Activity (our main page)
+                               Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
+
+                               //removing previous activities to avoid backstack
+                               //To prevent user from returning back to sign up activity on pressing back button after signup
+                              // registered.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                               startActivity(registered);
+                               finish(); //to close signup activity
+                           }else{
+                               Toast.makeText(signup.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
+
+                           }
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(signup.this, "User Registration failed. Please try again2", Toast.LENGTH_SHORT).show();
                 }
+                Toast.makeText(signup.this, "ONLY REGISTERED", Toast.LENGTH_SHORT).show();
+                Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
+                startActivity(registered);
             }
         });
     }
 
 }
+// 1.Create user
+// 2.Save user data into database
+// 3.
