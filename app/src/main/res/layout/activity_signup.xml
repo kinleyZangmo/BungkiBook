@@ -32,7 +32,8 @@
         android:padding="10dp"
         android:textColor="#FFFFFF"
         android:textColorHint="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <EditText
         android:id="@+id/email"
@@ -45,7 +46,8 @@
         android:padding="10dp"
         android:textColor="#FFFFFF"
         android:textColorHint="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/phone_no"
@@ -57,7 +59,8 @@
         android:hint="Phone No"
         android:padding="10dp"
         android:textColorHint="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="phone"/>
 
     <EditText
         android:id="@+id/password"
@@ -69,7 +72,8 @@
         android:hint="Password"
         android:padding="10dp"
         android:textColorHint="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="textPassword"/>
 
     <EditText
         android:id="@+id/confirm_password"
@@ -81,7 +85,8 @@
         android:hint="Confirm Password"
         android:padding="10dp"
         android:textColorHint="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/createA"
@@ -92,6 +97,6 @@
         android:background="@drawable/buttonradius"
         android:text="Create Account"
         android:textSize="20sp"
-        android:onClick="Register"/>
+        />
 
 </LinearLayout>
