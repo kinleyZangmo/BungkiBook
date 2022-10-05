@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginUser(String txtEmail, String txtPassword) {
+        //login using email and password
         authProfile.signInWithEmailAndPassword(txtEmail,txtPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
