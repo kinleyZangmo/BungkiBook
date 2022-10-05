@@ -57,6 +57,7 @@
         app:tint="@android:color/white"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:id="@+id/recview"
         android:layout_width="match_parent"
         android:layout_height="624dp"
