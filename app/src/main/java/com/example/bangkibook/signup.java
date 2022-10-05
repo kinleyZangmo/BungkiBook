@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ public class signup extends AppCompatActivity {
 
     private EditText storeName,email,phoneNo,password,confirmPassword;
     Button buttonCreateAccount;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class signup extends AppCompatActivity {
         password=findViewById(R.id.password);
         confirmPassword=findViewById(R.id.confirm_password);
         buttonCreateAccount=findViewById(R.id.createA);
+        progressBar=findViewById(R.id.progressbar);
 
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +86,9 @@ public class signup extends AppCompatActivity {
                 }else{
                     //If all the fields are filled and valid
                     //Toast.makeText(signup.this, "Account Created", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.VISIBLE);
                     registerUser(Store_Name,Store_Email,Store_PhoneNo,Store_Password);
+
                 }
             }
         });
@@ -128,6 +133,7 @@ public class signup extends AppCompatActivity {
                                startActivity(registered);
                                finish(); //to close signup activity
                            }else{
+                               progressBar.setVisibility(View.GONE);
                                Toast.makeText(signup.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
 
                            }
@@ -135,8 +141,10 @@ public class signup extends AppCompatActivity {
                     });
 
                 }else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(signup.this, "User Registration failed. Please try again2", Toast.LENGTH_SHORT).show();
                 }
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(signup.this, "ONLY REGISTERED", Toast.LENGTH_SHORT).show();
                 Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
                 startActivity(registered);

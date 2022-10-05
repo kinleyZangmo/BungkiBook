@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         EditTxtemail=findViewById(R.id.user_email);
         EditTxtpassword=findViewById(R.id.user_password);
         progressBar=findViewById(R.id.progressbar);
-
         authProfile = FirebaseAuth.getInstance();
     }
 

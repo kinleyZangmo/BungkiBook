@@ -8,7 +8,6 @@
     android:background="@color/background"
     >
 
-
     <SearchView
         android:id="@+id/searchView"
         android:searchIcon="@drawable/ic_baseline_search_24"
@@ -57,10 +56,10 @@
         app:tint="@android:color/white"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="20dp"
         android:id="@+id/recview"
         android:layout_width="match_parent"
         android:layout_height="624dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
