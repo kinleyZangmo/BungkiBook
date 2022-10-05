@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "182835195477",
+    "firebase_url": "https://bungkibookdb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bungkibookdb",
+    "storage_bucket": "bungkibookdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182835195477:android:9d161f0cf3edfd3dbc2edc",
+        "android_client_info": {
+          "package_name": "com.example.bangkibook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182835195477-kenri3omepgusrcrhq7d16i8majm1b80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTUTGSauTmQ1y1slUSehradg_vbWxHsyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182835195477-kenri3omepgusrcrhq7d16i8majm1b80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
