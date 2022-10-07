@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
         String txtPassword = EditTxtpassword.getText().toString();
 
         if(TextUtils.isEmpty(txtEmail)){
-            EditTxtemail.setError("Email is Required");
+            EditTxtemail.setError("Email is required");
             EditTxtemail.requestFocus();
         }else if(!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()){
-            EditTxtemail.setError("Valid is Required");
+            EditTxtemail.setError("Valid email is required");
             EditTxtemail.requestFocus();
         }
         else if(TextUtils.isEmpty(txtPassword)){
-            EditTxtpassword.setError("Password is Required");
+            EditTxtpassword.setError("Password is required");
             EditTxtpassword.requestFocus();
         }else {
             progressBar.setVisibility(View.VISIBLE);

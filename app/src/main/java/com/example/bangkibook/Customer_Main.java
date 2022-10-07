@@ -41,7 +41,7 @@ public class Customer_Main extends AppCompatActivity {
     }
 
     public void addCustomer(View view) {
-        Intent intentLogin = new Intent(this, add_customers.class);
-        startActivity(intentLogin);
+        Intent intentAddCustomer = new Intent(this, add_customers.class);
+        startActivity(intentAddCustomer);
     }
 }

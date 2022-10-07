@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".add_customers"
+    android:layout_gravity="center"
     android:background="@color/background">
 
 
     <TextView
         android:id="@+id/topic"
-        android:layout_width="412dp"
-        android:layout_height="42dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/new_customer"
         android:textAlignment="center"
@@ -21,112 +22,121 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/namelayout"
+        style="@style/InputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_horizontal"
+        android:hint="Name"
+        android:maxWidth="37dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nametext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="14dp"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/idlayout"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/name"
+        android:hint="Student ID"
         android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topic" />
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/namelayout"
+        app:layout_constraintStart_toStartOf="@+id/namelayout"
+        app:layout_constraintTop_toBottomOf="@+id/namelayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/stdidtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:paddingTop="14dp"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-
-        android:id="@+id/stdid"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emaillayout"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/student_id"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nametext" />
-
-    <EditText
-        android:id="@+id/nametext"
-        android:layout_width="337dp"
-        android:layout_height="48dp"
-        android:background="@drawable/borderradius"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <EditText
-        android:id="@+id/stdidtext"
-        android:layout_width="337dp"
-        android:layout_height="48dp"
-        android:background="@drawable/borderradius"
-        android:inputType="number"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/nametext"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nametext"
-        app:layout_constraintTop_toBottomOf="@+id/stdid" />
-
-    <TextView
-
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/email"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stdidtext" />
-
-    <EditText
-        android:id="@+id/emailtext"
-        android:layout_width="337dp"
-        android:layout_height="48dp"
-        android:background="@drawable/borderradius"
+        android:layout_marginTop="24dp"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-
-        android:padding="10dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/stdidtext"
-        app:layout_constraintStart_toStartOf="@+id/stdidtext"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/idlayout"
+        app:layout_constraintStart_toStartOf="@+id/idlayout"
+        app:layout_constraintTop_toBottomOf="@+id/idlayout">
 
-    <TextView
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="14dp"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        android:id="@+id/phoneno"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phonelayout"
+        style="@style/InputLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/phone_no"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailtext" />
-
-    <EditText
-        android:id="@+id/phonenotext"
-        android:layout_width="337dp"
-        android:layout_height="48dp"
-        android:background="@drawable/borderradius"
+        android:layout_marginTop="24dp"
+        android:hint="Phone No."
         android:inputType="phone"
-        android:padding="10dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/emailtext"
-        app:layout_constraintStart_toStartOf="@+id/emailtext"
-        app:layout_constraintTop_toBottomOf="@+id/phoneno" />
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/emaillayout"
+        app:layout_constraintStart_toStartOf="@+id/emaillayout"
+        app:layout_constraintTop_toBottomOf="@+id/emaillayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phonenotext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="14dp"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnnew"
@@ -139,6 +149,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phonenotext"
+        app:layout_constraintTop_toBottomOf="@+id/phonelayout"
         app:layout_constraintVertical_bias="0.971" />
 </androidx.constraintlayout.widget.ConstraintLayout>
