@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bangkibook.R;
+import com.example.bangkibook.myviewholder;
+
 import java.util.ArrayList;
 
 public class myadapter extends RecyclerView.Adapter<myviewholder>

@@ -1,4 +1,4 @@
-package com.example.bangkibook;
+package com.example.bangkibook.storeOwner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.bangkibook.R;
+import com.example.bangkibook.ReadWriteUserDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,9 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.regex.Pattern;
-
-public class signup extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     private EditText storeName,email,phoneNo,password,confirmPassword;
     Button buttonCreateAccount;
@@ -68,13 +68,13 @@ public class signup extends AppCompatActivity {
                         phoneNo.setError("Phone No is Required");
                         phoneNo.requestFocus();
                 } else if(Store_PhoneNo.length()!=8){
-                    phoneNo.setError("Phone no should be 10 digits");
+                    phoneNo.setError("Phone no should be 8 digits");
                     phoneNo.requestFocus();
                 }else if(TextUtils.isEmpty(Store_Password)) {
                     password.setError("Password Required");
                     password.requestFocus();
                 }else if(Store_Password.length()<3){
-                        password.setError("Password should be at least 6 digits");
+                        password.setError("Password should be at least 3 digits");
                         password.requestFocus();
                 }
                 else if(TextUtils.isEmpty(Store_ConfirmPassword)){
@@ -100,7 +100,7 @@ public class signup extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         //1.Create user profile
-        auth.createUserWithEmailAndPassword(store_email,store_password).addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(store_email,store_password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -121,11 +121,11 @@ public class signup extends AppCompatActivity {
                            if(task.isSuccessful()){
                                //send email verification
                                firebaseUser.sendEmailVerification();
+                               progressBar.setVisibility(View.GONE);
+                               Toast.makeText(SignUp.this, "User Registered Successfully. Please verify your email and login", Toast.LENGTH_LONG).show();
 
-                               Toast.makeText(signup.this, "User Registered Successfully. Please verify your email", Toast.LENGTH_SHORT).show();
-
-                               //Open Customer Activity (our main page)
-                               Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
+                               //Open Login Activity (our main page)
+                               Intent registered = new Intent(getApplicationContext(), MainActivity.class);
 
                                //removing previous activities to avoid backstack
                                //To prevent user from returning back to sign up activity on pressing back button after signup
@@ -134,7 +134,7 @@ public class signup extends AppCompatActivity {
                                finish(); //to close signup activity
                            }else{
                                progressBar.setVisibility(View.GONE);
-                               Toast.makeText(signup.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(SignUp.this, "Registration Failed .Please Check Network", Toast.LENGTH_SHORT).show();
 
                            }
                         }
@@ -142,12 +142,12 @@ public class signup extends AppCompatActivity {
 
                 }else{
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(signup.this, "User Registration failed. Please try again2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
                 }
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(signup.this, "ONLY REGISTERED", Toast.LENGTH_SHORT).show();
-                Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
-                startActivity(registered);
+//                progressBar.setVisibility(View.GONE);
+//                Toast.makeText(signup.this, "ONLY REGISTERED", Toast.LENGTH_SHORT).show();
+//                Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
+//                startActivity(registered);
             }
         });
     }

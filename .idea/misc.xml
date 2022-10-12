@@ -5,17 +5,13 @@
       <map>
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/font/barrio.xml" value="0.28020833333333334" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_add_customers.xml" value="0.234375" />
-        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_customer_list.xml" value="0.152" />
-        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_customer_credit.xml" value="0.25" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_customer_list.xml" value="0.2" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_login.xml" value="0.2359375" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_signup.xml" value="0.176" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/customerl_list.xml" value="0.25" />
-        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/singlerow.xml" value="0.25" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/mini project/BungkiBook/app/src/main/res/drawable/transaction_summary_bg.xml" value="0.1" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/mini project/BungkiBook/app/src/main/res/drawable/whiteborder_radius.xml" value="0.1" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/mini project/BungkiBook/app/src/main/res/layout/activity_add_customers.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/mini project/BungkiBook/app/src/main/res/layout/activity_customer_credit.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/mini project/BungkiBook/app/src/main/res/layout/activity_customer_detail.xml" value="0.1334853090172239" />
-        <entry key="..\:/Users/DELL/OneDrive/Desktop/02200150/MAD CTE306/mini project/BungkiBook/app/src/main/res/layout/activity_customer_list.xml" value="0.27447916666666666" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/singlerow.xml" value="0.264" />
       </map>
     </option>
   </component>

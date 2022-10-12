@@ -1,4 +1,4 @@
-package com.example.bangkibook;
+package com.example.bangkibook.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.bangkibook.Model;
+import com.example.bangkibook.R;
+import com.example.bangkibook.myadapter;
+
 import java.util.ArrayList;
 
-public class Customer_Main extends AppCompatActivity {
+public class CustomerLists extends AppCompatActivity {
 
     RecyclerView rcv;
     myadapter adapter;
@@ -41,7 +45,12 @@ public class Customer_Main extends AppCompatActivity {
     }
 
     public void addCustomer(View view) {
-        Intent intentAddCustomer = new Intent(this, add_customers.class);
+        Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         startActivity(intentAddCustomer);
+    }
+
+    public void viewCustomerCredit(View view) {
+        Intent credit = new Intent(this,CustomerCredit.class);
+        startActivity(credit);
     }
 }

@@ -1,9 +1,8 @@
 package com.example.bangkibook;
 
-public class Model
-{
+public class Model{
     private String header;
-    private String desc;
+   private String desc;
 
     public String getHeader() {
         return header;

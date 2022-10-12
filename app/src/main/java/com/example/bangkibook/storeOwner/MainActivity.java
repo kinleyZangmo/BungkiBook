@@ -1,4 +1,4 @@
-package com.example.bangkibook;
+package com.example.bangkibook.storeOwner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.bangkibook.customer.CustomerLists;
+import com.example.bangkibook.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(MainActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                    Intent intentLogin = new Intent(getApplicationContext(), Customer_Main.class);
+                    Intent intentLogin = new Intent(getApplicationContext(), CustomerLists.class);
                     startActivity(intentLogin);
                 }else{
                     Toast.makeText(MainActivity.this, "Login failed, try again", Toast.LENGTH_SHORT).show();
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void signupClick(View view) {
 
-        Intent intentSignup = new Intent(this, signup.class);
+        Intent intentSignup = new Intent(this, SignUp.class);
         startActivity(intentSignup);
         // intent takes to signup activity
     }

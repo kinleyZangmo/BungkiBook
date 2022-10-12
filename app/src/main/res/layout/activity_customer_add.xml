@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_customers"
+    tools:context=".customer.CustomerAdd"
     android:layout_gravity="center"
     android:background="@color/background">
-
 
     <TextView
         android:id="@+id/topic"

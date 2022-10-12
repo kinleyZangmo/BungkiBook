@@ -13,20 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BangkiBook"
         tools:targetApi="31">
+
         <activity
-            android:name=".CustomerCredit"
+            android:name=".customer.CustomerCredit"
             android:exported="false" />
         <activity
-            android:name=".Customer_Main"
+            android:name=".customer.CustomerLists"
             android:exported="false" />
         <activity
-            android:name=".add_customers"
+            android:name=".customer.CustomerAdd"
             android:exported="false" />
         <activity
-            android:name=".signup"
+            android:name=".storeOwner.SignUp"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".storeOwner.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

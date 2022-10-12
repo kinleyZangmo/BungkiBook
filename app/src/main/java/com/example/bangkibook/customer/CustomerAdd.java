@@ -1,14 +1,16 @@
-package com.example.bangkibook;
+package com.example.bangkibook.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CustomerCredit extends AppCompatActivity {
+import com.example.bangkibook.R;
+
+public class CustomerAdd extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_credit);
+        setContentView(R.layout.activity_customer_add);
     }
 }
