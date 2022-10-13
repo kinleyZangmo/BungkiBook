@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUp extends AppCompatActivity {
+public class OwnerSignUp extends AppCompatActivity {
 
     private EditText storeName,email,phoneNo,password,confirmPassword;
     Button buttonCreateAccount;
@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_owner_signup);
 
         storeName = findViewById(R.id.store_name);
         email=findViewById(R.id.email);
@@ -100,7 +100,7 @@ public class SignUp extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         //1.Create user profile
-        auth.createUserWithEmailAndPassword(store_email,store_password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(store_email,store_password).addOnCompleteListener(OwnerSignUp.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -122,10 +122,10 @@ public class SignUp extends AppCompatActivity {
                                //send email verification
                                firebaseUser.sendEmailVerification();
                                progressBar.setVisibility(View.GONE);
-                               Toast.makeText(SignUp.this, "User Registered Successfully. Please verify your email and login", Toast.LENGTH_LONG).show();
+                               Toast.makeText(OwnerSignUp.this, "User Registered Successfully. Please verify your email and login", Toast.LENGTH_LONG).show();
 
                                //Open Login Activity (our main page)
-                               Intent registered = new Intent(getApplicationContext(), MainActivity.class);
+                               Intent registered = new Intent(getApplicationContext(), OwnerMainActivity.class);
 
                                //removing previous activities to avoid backstack
                                //To prevent user from returning back to sign up activity on pressing back button after signup
@@ -134,7 +134,7 @@ public class SignUp extends AppCompatActivity {
                                finish(); //to close signup activity
                            }else{
                                progressBar.setVisibility(View.GONE);
-                               Toast.makeText(SignUp.this, "Registration Failed .Please Check Network", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(OwnerSignUp.this, "Registration Failed .Please Check Network", Toast.LENGTH_SHORT).show();
 
                            }
                         }
@@ -142,7 +142,7 @@ public class SignUp extends AppCompatActivity {
 
                 }else{
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(SignUp.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OwnerSignUp.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
                 }
 //                progressBar.setVisibility(View.GONE);
 //                Toast.makeText(signup.this, "ONLY REGISTERED", Toast.LENGTH_SHORT).show();

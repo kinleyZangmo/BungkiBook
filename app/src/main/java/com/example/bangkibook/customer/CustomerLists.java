@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.bangkibook.Model;
 import com.example.bangkibook.R;
 import com.example.bangkibook.myadapter;
+import com.example.bangkibook.storeOwner.OwnerProfile;
 
 import java.util.ArrayList;
 
@@ -51,6 +53,12 @@ public class CustomerLists extends AppCompatActivity {
 
     public void viewCustomerCredit(View view) {
         Intent credit = new Intent(this,CustomerCredit.class);
+        startActivity(credit);
+    }
+
+    public void DisplayProfile(View view) {
+        Toast.makeText(this, "CLICKED", Toast.LENGTH_LONG).show();
+        Intent credit = new Intent(this, OwnerProfile.class);
         startActivity(credit);
     }
 }

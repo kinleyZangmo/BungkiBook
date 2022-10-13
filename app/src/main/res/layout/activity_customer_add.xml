@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topic">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nametext"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="14dp"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/namelayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/stdidtext"
+            android:id="@+id/stdid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idlayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailtext"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="14dp"
@@ -130,15 +130,27 @@
         app:layout_constraintTop_toBottomOf="@+id/emaillayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phonenotext"
+            android:id="@+id/phoneno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="14dp"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonelayout"
+        android:visibility="gone"/>
+
     <Button
-        android:id="@+id/btnnew"
+        android:id="@+id/createC"
         android:layout_width="329dp"
         android:layout_height="51dp"
         android:layout_marginBottom="44dp"

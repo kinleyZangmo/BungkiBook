@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#050034"
     android:orientation="vertical"
-    tools:context=".storeOwner.SignUp"
+    tools:context=".storeOwner.OwnerSignUp"
     >
 
     <TextView
