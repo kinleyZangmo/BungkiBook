@@ -20,8 +20,6 @@ public class OwnerProfile extends AppCompatActivity {
         name=findViewById(R.id.storeName);
         email=findViewById(R.id.storeEmail);
         phoneNo=findViewById(R.id.storePhoneNo);
-
-
     }
 
     //Logout Session
