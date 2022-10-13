@@ -22,8 +22,8 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Customers"
-                android:textSize="30dp"
+                android:text="Customer List"
+                android:textSize="40dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,14 +62,16 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_perm_identity_24"
         android:id="@+id/OwnerProfile"
         android:layout_gravity="right"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:padding="5dp"
         android:onClick="DisplayProfile"
+        android:backgroundTint="@color/purple_200"
    />
 
 
