@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#050034"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".storeOwner.OwnerSignUp"
     >
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:textColor="@color/white"
+        android:textColor="@color/titles"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="40sp"
@@ -30,8 +30,8 @@
         android:background="@drawable/borderradius"
         android:hint="Store Name"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/buttons"
         android:textSize="20sp"
         />
 
@@ -44,8 +44,8 @@
         android:background="@drawable/borderradius"
         android:hint="Email"
         android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/buttons"
         android:textSize="20sp"
         android:inputType="textEmailAddress"/>
 
@@ -58,7 +58,8 @@
         android:background="@drawable/borderradius"
         android:hint="Phone No"
         android:padding="10dp"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/buttons"
         android:textSize="20sp"
         android:inputType="phone"/>
 
@@ -71,7 +72,7 @@
         android:background="@drawable/borderradius"
         android:hint="Password"
         android:padding="10dp"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/buttons"
         android:textSize="20sp"
         android:inputType="textPassword"/>
 
@@ -84,18 +85,19 @@
         android:background="@drawable/borderradius"
         android:hint="Confirm Password"
         android:padding="10dp"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/buttons"
         android:textSize="20sp"
         android:inputType="textPassword"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createA"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:background="@drawable/buttonradius"
+        android:background="@drawable/whiteborder_radius"
         android:text="Create Account"
+        android:textColor="@color/white"
         android:textSize="20sp"
         />
 

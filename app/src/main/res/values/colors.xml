@@ -7,7 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#050034</color>
-    <color name="buttons">#0080D0</color>
+    <color name="background">#FFFFFF</color>
+    <color name="buttons">#8685ef</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
+    <color name="titles">#5F5C6D</color>
 </resources>
