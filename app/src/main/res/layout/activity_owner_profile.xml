@@ -8,13 +8,15 @@
     android:orientation="vertical"
     android:layout_marginHorizontal="20dp"
     android:layout_marginTop="200dp"
-    android:background="@color/purple_200">
+    android:background="@color/purple_200"
+    android:padding="20dp"
+    >
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Store Owner Details"
+        android:text="Store Details"
         android:textSize="40dp"
         android:textStyle="bold"
         android:gravity="center">
@@ -74,10 +76,13 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Log Out"
         android:layout_marginTop="30dp"
-        android:onClick="logout"/>
+        android:onClick="logout"
+        android:background="@drawable/buttonradius"
+        android:drawableRight="@drawable/ic_baseline_login_24"/>
 
 </LinearLayout>

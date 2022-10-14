@@ -125,7 +125,7 @@ public class OwnerSignUp extends AppCompatActivity {
                                Toast.makeText(OwnerSignUp.this, "User Registered Successfully. Please verify your email and login", Toast.LENGTH_LONG).show();
 
                                //Open Login Activity (our main page)
-                               Intent registered = new Intent(getApplicationContext(), OwnerMainActivity.class);
+                               Intent registered = new Intent(getApplicationContext(), OwnerLogin.class);
 
                                //removing previous activities to avoid backstack
                                //To prevent user from returning back to sign up activity on pressing back button after signup

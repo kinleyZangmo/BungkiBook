@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.bangkibook.customer.CustomerAdd;
 import com.example.bangkibook.customer.CustomerLists;
 import com.example.bangkibook.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,15 +18,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class OwnerMainActivity extends AppCompatActivity {
-   private EditText EditTxtemail, EditTxtpassword;
-   private ProgressBar progressBar;
-   private FirebaseAuth authProfile;
+public class OwnerLogin extends AppCompatActivity {
+    private EditText EditTxtemail, EditTxtpassword;
+    private ProgressBar progressBar;
+    private FirebaseAuth authProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner);
+        setContentView(R.layout.activity_owner_login);
 
         EditTxtemail=findViewById(R.id.user_email);
         EditTxtpassword=findViewById(R.id.user_password);
@@ -52,7 +51,7 @@ public class OwnerMainActivity extends AppCompatActivity {
         }else {
             progressBar.setVisibility(View.VISIBLE);
             loginUser(txtEmail,txtPassword);
-           
+
         }
     }
 
@@ -62,11 +61,11 @@ public class OwnerMainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(OwnerMainActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OwnerLogin.this, "You are logged in", Toast.LENGTH_SHORT).show();
                     Intent intentLogin = new Intent(getApplicationContext(), CustomerLists.class);
                     startActivity(intentLogin);
                 }else{
-                    Toast.makeText(OwnerMainActivity.this, "Login failed, try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OwnerLogin.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
                 progressBar.setVisibility(View.GONE);
             }
