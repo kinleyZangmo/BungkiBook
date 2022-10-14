@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:hint="JM Canteen"/>
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:hint="Kinleyzangmo4@gmail.com"/>
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:hint="JM Canteen"/>
+            />
     </LinearLayout>
 
     <Button

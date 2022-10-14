@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.bangkibook.R;
-import com.example.bangkibook.ReadWriteUserDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -107,7 +106,7 @@ public class OwnerSignUp extends AppCompatActivity {
                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
                     //2.Entering user data into realtime database : Firebase
-                    ReadWriteUserDetails WriteUserDetails = new ReadWriteUserDetails(store_name,store_email,store_phoneNo,store_password);
+                    ReadWriteOwnerDetails WriteUserDetails = new ReadWriteOwnerDetails(store_name,store_email,store_phoneNo,store_password);
 
                     //Extracting user reference from Database for "Registered Users"
                     //To read or write data from database you need an instance of DatabaseReference

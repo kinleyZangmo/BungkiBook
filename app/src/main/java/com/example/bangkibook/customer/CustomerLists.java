@@ -57,7 +57,6 @@ public class CustomerLists extends AppCompatActivity {
     }
 
     public void DisplayProfile(View view) {
-        Toast.makeText(this, "CLICKED", Toast.LENGTH_LONG).show();
         Intent credit = new Intent(this, OwnerProfile.class);
         startActivity(credit);
     }
