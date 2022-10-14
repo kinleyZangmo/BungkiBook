@@ -17,9 +17,11 @@ public class Home extends Application {
 
          //if user has not logged out they will be redirected to Customer List page even after closing the app.
         //This will avoid the user from having to login everytime they open the app.
-        
+
         if(firebaseUser!=null){
-            startActivity(new Intent(this, CustomerLists.class));
+            Intent intent = new Intent(Home.this, CustomerLists.class);
+            intent.putExtra("uid", firebaseAuth.getUid());
+            startActivity(intent);
         }
     }
 }

@@ -1,51 +1,71 @@
 package com.example.bangkibook.customer;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.bangkibook.Model;
 import com.example.bangkibook.R;
-import com.example.bangkibook.myadapter;
 import com.example.bangkibook.storeOwner.OwnerProfile;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CustomerLists extends AppCompatActivity {
+public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
 
-    RecyclerView rcv;
-    myadapter adapter;
+    RecyclerView recyclerView;
+    String uid;
+    private final FirebaseDatabase db = FirebaseDatabase.getInstance();
+    MyAdapter myAdapter;
+    ArrayList<CustomerInfo> list =new ArrayList<>();
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_list);
-        rcv = (RecyclerView) findViewById(R.id.recview);
-        rcv.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new myadapter(dataqueue());
-        rcv.setAdapter(adapter);
+        Intent i = getIntent();
+        uid = i.getStringExtra("uid");
+        System.out.println(uid + "working");
+
+        DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
+        recyclerView = findViewById(R.id.userlist);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        myAdapter = new MyAdapter(this, list, this);
+        recyclerView.setAdapter(myAdapter);
+
+        root.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    CustomerInfo customerInfo = dataSnapshot.getValue(CustomerInfo.class);
+                    list.add(customerInfo);
+                }
+
+                myAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
-        public ArrayList<Model> dataqueue() {
-        ArrayList<Model> holder = new ArrayList<>();
-        String[] name =new String[] {"Kinley", "Kezang", "Dechen","Kinley", "Kezang", "Dechen","Kinley", "Kezang", "Dechen","Kinley", "Kezang", "Dechen"};
-        int[] stdId =new int[] {02200150, 02200152,02200144,02200150, 02200152,02200144,02200150, 02200152,02200144,02200150, 02200152,02200144};
-
-        int len = name.length;
-        Model[] arr =  new Model[len];
-
-        for (int i = 0; i < len; i++) {
-            arr[i] = new Model();
-            arr[i].setHeader(name[i]);
-            arr[i].setDesc(String.valueOf(stdId[i]));
-            holder.add(arr[i]);
-        }
-        return holder;
-    }
-
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         startActivity(intentAddCustomer);
@@ -60,4 +80,14 @@ public class CustomerLists extends AppCompatActivity {
         Intent credit = new Intent(this, OwnerProfile.class);
         startActivity(credit);
     }
+
+    @Override
+    public void onNoteClick(int position) {
+        Log.d(TAG, "onNoteClick: " + position);
+        Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
+//        intent.putExtra("cid", list.get(position));
+        intent.putExtra("sid", list.get(position).getStdId());
+        startActivity(intent);
+    }
+
 }

@@ -63,6 +63,7 @@ public class OwnerLogin extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(OwnerLogin.this, "You are logged in", Toast.LENGTH_SHORT).show();
                     Intent intentLogin = new Intent(getApplicationContext(), CustomerLists.class);
+                    intentLogin.putExtra("uid", authProfile.getUid());
                     startActivity(intentLogin);
                 }else{
                     Toast.makeText(OwnerLogin.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
