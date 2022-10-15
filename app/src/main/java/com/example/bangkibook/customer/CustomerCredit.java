@@ -146,7 +146,7 @@ public class CustomerCredit extends AppCompatActivity {
         dialog.show();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     private void openClearDialog() {
         dialog2=new Dialog(this);
         dialog2.setContentView(R.layout.add_credit_dialog);
