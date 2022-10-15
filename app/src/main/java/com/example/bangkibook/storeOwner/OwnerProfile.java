@@ -34,19 +34,18 @@ public class OwnerProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_profile);
-
         name=findViewById(R.id.storeName);
         email=findViewById(R.id.storeEmail);
         phoneNo=findViewById(R.id.storePhoneNo);
-
         read();
-
     }
 
     public void read(){
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
+        //root node Registered User
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        //child node of root node, The Store Owners
         databaseReference.child(firebaseUser.getUid() ).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {

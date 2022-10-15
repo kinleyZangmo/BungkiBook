@@ -81,8 +81,8 @@ public class CustomerAdd extends AppCompatActivity {
                 Intent intent = new Intent(CustomerAdd.this, CustomerLists.class);
                 intent.putExtra("uid", uid);
                 startActivity(intent);
+                finish();
             }
-
 
         });
     }

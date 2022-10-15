@@ -88,7 +88,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         intent.putExtra("uid", uid);
         intent.putExtra("stdId", list.get(position).getStdId());
         startActivity(intent);
-        finish();
+
     }
 
 }
