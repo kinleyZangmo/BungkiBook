@@ -37,7 +37,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
 
         Intent i = getIntent();
         uid = i.getStringExtra("uid");
-        System.out.println(uid + "working");
+//        System.out.println(uid + "working");
 
         DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         recyclerView = findViewById(R.id.userlist);
@@ -68,6 +68,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
     }
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
+        intentAddCustomer.putExtra("uid", uid);
         startActivity(intentAddCustomer);
     }
 

@@ -2,6 +2,7 @@ package com.example.bangkibook.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -9,19 +10,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.bangkibook.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CustomerAdd extends AppCompatActivity {
 
     private EditText name,sId,email,phoneNo;
     Button buttonCreateCustomer;
     ProgressBar progressBar;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_add);
+
+        Intent i = getIntent();
+        uid = i.getStringExtra("uid");
 
         name=findViewById(R.id.name);
         sId=findViewById(R.id.stdid);
@@ -63,14 +71,19 @@ public class CustomerAdd extends AppCompatActivity {
                 phoneNo.requestFocus();
             }else{
                 progressBar.setVisibility(View.VISIBLE);
-                createAccount(Customer_name,Customer_sId,Customer_email,Customer_phoneNo);
+                CustomerInfo customerInfo =  new CustomerInfo(Customer_name, Customer_email, Customer_phoneNo, Customer_sId, 0);
+
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference root = db.getReference().child("Registered Users").child(uid);
+                root.child(customerInfo.getStdId()).setValue(customerInfo);
+                Toast.makeText(this, "Customer Created", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(CustomerAdd.this, CustomerLists.class);
+                intent.putExtra("uid", uid);
+                startActivity(intent);
             }
 
 
         });
-    }
-
-    private void createAccount(String customer_name, String customer_sId, String customer_email, String customer_phoneNo) {
-        //
     }
 }

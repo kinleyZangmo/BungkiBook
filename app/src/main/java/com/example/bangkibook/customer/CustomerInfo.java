@@ -1,58 +1,58 @@
 package com.example.bangkibook.customer;
 
 public class CustomerInfo {
-    String name,email,stdId;
-    int phoneNumber;
-    float credit;
+    String Name,Email,StdId, PhoneNumber;
+    float Credit;
+    CustomerCreditDetails customerCreditDetails;
 
     public CustomerInfo() {
     }
 
-    public CustomerInfo(String name, String email, int phoneNumber, String stdId, float credit) {
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.stdId = stdId;
-        this.credit = credit;
+    public CustomerInfo(String name, String email, String phoneNumber, String stdId, float credit) {
+        this.Name = name;
+        this.Email = email;
+        this.PhoneNumber = phoneNumber;
+        this.StdId = stdId;
+        this.Credit = credit;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNumber() {
+        return PhoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.PhoneNumber = phoneNumber;
     }
 
     public String getStdId() {
-        return stdId;
+        return StdId;
     }
 
     public void setStdId(String stdId) {
-        this.stdId = stdId;
+        this.StdId = stdId;
     }
 
     public float getCredit() {
-        return credit;
+        return Credit;
     }
 
     public void setCredit(float credit) {
-        this.credit = credit;
+        this.Credit = credit;
     }
 }
