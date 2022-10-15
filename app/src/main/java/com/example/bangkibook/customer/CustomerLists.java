@@ -48,7 +48,6 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         recyclerView.setAdapter(myAdapter);
 
         root.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {

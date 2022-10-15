@@ -74,7 +74,7 @@ public class CustomerAdd extends AppCompatActivity {
                 CustomerInfo customerInfo =  new CustomerInfo(Customer_name, Customer_email, Customer_phoneNo, Customer_sId, 0);
 
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference root = db.getReference().child("Registered Users").child(uid);
+                DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
                 root.child(customerInfo.getStdId()).setValue(customerInfo);
                 Toast.makeText(this, "Customer Created", Toast.LENGTH_SHORT).show();
 
