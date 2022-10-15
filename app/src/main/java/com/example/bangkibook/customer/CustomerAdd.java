@@ -40,7 +40,7 @@ public class CustomerAdd extends AppCompatActivity {
 
         buttonCreateCustomer.setOnClickListener(view -> {
             //Obtain data from input fields
-            String Customer_name =name.getText().toString();
+            String Customer_name = name.getText().toString();
             String Customer_sId=sId.getText().toString();
             String Customer_email=email.getText().toString();
             String Customer_phoneNo=phoneNo.getText().toString();

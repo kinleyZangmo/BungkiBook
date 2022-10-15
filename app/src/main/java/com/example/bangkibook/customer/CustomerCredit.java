@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CustomerCredit extends AppCompatActivity {
-    String stdId;
+    String stdId,uid;
     private  TextView name, amount;
 
     ArrayList<CustomerInfo> list =new ArrayList<>();
@@ -32,13 +32,16 @@ public class CustomerCredit extends AppCompatActivity {
         setContentView(R.layout.activity_customer_credit);
 
         Intent i = getIntent();
-        stdId = i.getStringExtra("sid");
+        uid = i.getStringExtra("uid");
+        stdId = i.getStringExtra("stdId");
+        System.out.println(uid + "helllo working " + stdId);
+
 
         name = findViewById(R.id.customerName);
         amount = findViewById(R.id.Amount);
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference root = db.getReference().child("Users").child("dechen").child("customers");
+        DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
 
         root.child(stdId).get().addOnCompleteListener(new OnCompleteListener<com.google.firebase.database.DataSnapshot>() {
             @Override
