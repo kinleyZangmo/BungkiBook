@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable-v24/customer_rounded_border.xml" value="0.203" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable/add_credit.xml" value="0.2065" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable/background_splashscreen.xml" value="0.17" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable/bgfor_dialog.xml" value="0.1515" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable/buttonradius.xml" value="0.2555" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable/ic_baseline_payments_24.xml" value="0.229" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.136" />
@@ -26,12 +29,11 @@
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_owner_signup.xml" value="0.2" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_signup.xml" value="0.176" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/add_credit_dialog.xml" value="0.264" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/add_credit_layout.xml" value="0.24895833333333334" />
+        <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/clear_credit_dialog.xml" value="0.25" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/customerl_list.xml" value="0.25" />
         <entry key="..\:/CSTsemNotes/Semester-5 Notes/CTE306 Mobile Application Development/Lab/BangkiBook/app/src/main/res/layout/singlerow.xml" value="0.264" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/BungkiBook/app/src/main/res/layout/activity_customer_add.xml" value="0.13134057971014493" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/BungkiBook/app/src/main/res/layout/activity_customer_credit.xml" value="0.24166666666666667" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/BungkiBook/app/src/main/res/layout/activity_customer_list.xml" value="0.24166666666666667" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/BungkiBook/app/src/main/res/layout/singlerow.xml" value="0.24166666666666667" />
       </map>
     </option>
   </component>

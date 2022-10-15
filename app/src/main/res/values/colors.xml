@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FFFFFF</color>
     <color name="buttons">#8685ef</color>
+    <color name="faded_white">#CDF2F1F4</color>
+
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
     <color name="titles">#5F5C6D</color>
 </resources>

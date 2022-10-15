@@ -33,11 +33,11 @@
         app:layout_constraintTop_toBottomOf="@+id/Amount">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addCreditTxt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/transaction_summary_bg"
             android:inputType="number"
-            android:text="Nu."
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -96,7 +96,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:inputType="number"
         android:minWidth="227dp"
         android:minHeight="48dp"
         app:endIconMode="clear_text"
@@ -108,11 +107,11 @@
         app:layout_constraintTop_toBottomOf="@+id/addnumber">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/clearnumtxt"
+            android:id="@+id/clearCreditTxt"
             android:background="@drawable/transaction_summary_bg"
             android:textColor="@color/white"
-            android:text="Nu."
             android:textStyle="bold"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
