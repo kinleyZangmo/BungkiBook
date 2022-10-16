@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-    android:layout_height="350dp"
+    android:layout_height="300dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:backgroundTint="@color/purple_200">
@@ -15,9 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/purple_200">
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/transaction_summary_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
              >
@@ -32,61 +33,83 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/close" />
 
+
             <TextView
                 android:id="@+id/displayCredit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="16dp"
-                android:text="value here"
-                android:textSize="19dp"
+                android:layout_width="293dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="40dp"
+                android:text="Are you sure you want to add credit Nu.300? "
+                android:textColor="@color/white"
+                android:textSize="29sp"
                 android:textStyle="bold"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.403"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="Add Remark"
-                android:textSize="29dp"
-                android:textStyle="italic|bold"
+                android:textColor="@color/white"
+                android:textSize="19sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.133"
+                app:layout_constraintHorizontal_bias="0.097"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/displayCredit" />
 
-           <EditText
-               android:id="@+id/remark_txt"
-               android:layout_width="304dp"
-               android:layout_height="134dp"
-               android:layout_marginHorizontal="30dp"
-               android:layout_marginTop="20dp"
-               android:background="@color/faded_white"
-               android:inputType="text"
-               android:padding="10dp"
-               android:textColor="@color/white"
-               android:textColorHint="#FFFFFF"
-               android:textSize="20sp"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/textView"/>
+            <EditText
+                android:id="@+id/remark_txt"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bgfor_dialog"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
             <Button
                 android:id="@+id/okBTN"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="28dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/buttonradius"
-                android:text="OK"
+                android:text="Confirm"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remark_txt"
+                app:layout_constraintVertical_bias="0.0" />
 
+            <Button
+                android:id="@+id/deleteBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttonradius"
+                android:text="Cancel"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/okBTN"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/remark_txt"
                 app:layout_constraintVertical_bias="0.0" />
 

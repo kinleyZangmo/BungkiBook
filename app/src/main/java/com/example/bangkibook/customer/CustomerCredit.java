@@ -73,7 +73,7 @@ public class CustomerCredit extends AppCompatActivity {
                     String amountV = String.valueOf(dataSnapshot.child("credit").getValue());
 
                     name.setText(nameV);
-                    amount.setText(amountV);
+                    amount.setText("Nu."+amountV);
 
                 } else{
                     Toast.makeText(CustomerCredit.this, "Get to get data ", Toast.LENGTH_SHORT).show();
@@ -113,9 +113,10 @@ public class CustomerCredit extends AppCompatActivity {
 
         ImageView imageViewClose = dialog.findViewById(R.id.imageViewClose);
         Button btn_ok= dialog.findViewById(R.id.okBTN);
+        Button btn_delete=dialog.findViewById(R.id.deleteBTN);
         EditText remark = dialog.findViewById(R.id.remark_txt);
         TextView head =dialog.findViewById(R.id.displayCredit);
-        head.setText("Credit Entered: Nu."+addC.getText().toString());
+        head.setText("Are you sure you want to add credit Nu."+addC.getText().toString()+" ?");
 
         //closing the dialog box
         imageViewClose.setOnClickListener(new View.OnClickListener() {
@@ -124,12 +125,19 @@ public class CustomerCredit extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+        //Cancel
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // remark.setText("");
+                dialog.dismiss();
+            }
+        });
 
         //final add/confirm button
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                  //[1.Date] ??   String f= String.valueOf(LocalDate.now());
                 int credit_amount=Integer.parseInt(addC.getText().toString()); //[2.Amount]
@@ -154,15 +162,26 @@ public class CustomerCredit extends AppCompatActivity {
 
         ImageView imageViewClose = dialog2.findViewById(R.id.imageViewClose);
         Button btn_ok = dialog2.findViewById(R.id.okBTN);
+        Button btn_delete=dialog2.findViewById(R.id.deleteBTN);
         EditText remark = dialog2.findViewById(R.id.remark_txt);
         TextView head =dialog2.findViewById(R.id.displayCredit);
-        head.setText("Clear Credit: Nu."+clearC.getText().toString());
+        head.setText("Are you sure you want to clear credit Nu."+clearC.getText().toString()+" ?");
 
         //closing the dialog box
         imageViewClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog2.dismiss();
+            }
+        });
+
+        //Cancel
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // remark.setText("");
+                dialog.dismiss();
+
             }
         });
 
@@ -174,6 +193,7 @@ public class CustomerCredit extends AppCompatActivity {
                 int credit_amount=Integer.parseInt(clearC.getText().toString()); //[2.Amount]
                 String credit_remark=remark.getText().toString();  // [3. Remarks]
                 String credit_status="clear"; //[4.Status]
+
                 Toast.makeText(getApplicationContext(),"CREDIT CLEARED",Toast.LENGTH_SHORT).show();
                 dialog2.dismiss();
 
