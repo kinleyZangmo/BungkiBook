@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ public class CustomerCredit extends AppCompatActivity {
 
     ArrayList<CustomerInfo> list =new ArrayList<>();
     private Object DataSnapshot;
+    public String nameV,amountV,emailV,phoneNoV;
 
     EditText addC,clearC;
     Button add_btn,clear_btn;
@@ -69,8 +71,13 @@ public class CustomerCredit extends AppCompatActivity {
                     Toast.makeText(CustomerCredit.this, "data Successfully read", Toast.LENGTH_SHORT).show();
                     DataSnapshot dataSnapshot = task.getResult();
 
-                    String nameV = String.valueOf(dataSnapshot.child("name").getValue());
-                    String amountV = String.valueOf(dataSnapshot.child("credit").getValue());
+                    nameV = String.valueOf(dataSnapshot.child("name").getValue());
+                    amountV = String.valueOf(dataSnapshot.child("credit").getValue());
+
+                    //retrieving for customer full profile too, here -kz
+                    emailV=String.valueOf(dataSnapshot.child("email").getValue());
+                    phoneNoV=String.valueOf(dataSnapshot.child("phoneNumber").getValue());
+
 
                     name.setText(nameV);
                     amount.setText("Nu."+amountV);
@@ -204,6 +211,16 @@ public class CustomerCredit extends AppCompatActivity {
         });
 
         dialog2.show();
+    }
+
+    public void DisplayCustomerProfile(View view) {
+        Intent customerProfile = new Intent(this,CustomerProfile.class);
+
+        customerProfile.putExtra("cSid",stdId);
+        customerProfile.putExtra("cName",nameV);
+        customerProfile.putExtra("cEmail",emailV);
+        customerProfile.putExtra("cPhoneNo",phoneNoV);
+        startActivity(customerProfile);
     }
 }
 

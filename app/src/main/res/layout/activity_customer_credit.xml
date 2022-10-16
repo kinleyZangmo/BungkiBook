@@ -7,6 +7,21 @@
     android:background="@color/background"
     tools:context=".customer.CustomerCredit">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/OwnerProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/purple_200"
+        android:onClick="DisplayCustomerProfile"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_perm_identity_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/customerName"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/customerName"
         android:layout_width="wrap_content"
