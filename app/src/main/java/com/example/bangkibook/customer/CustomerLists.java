@@ -77,8 +77,9 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
     }
 
     public void DisplayProfile(View view) {
-        Intent credit = new Intent(this, OwnerProfile.class);
-        startActivity(credit);
+        Intent c = new Intent(this, OwnerProfile.class);
+        c.putExtra("uid", uid);
+        startActivity(c);
     }
 
     @Override

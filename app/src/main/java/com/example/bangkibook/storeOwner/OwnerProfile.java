@@ -25,9 +25,6 @@ import java.util.ArrayList;
 
 public class OwnerProfile extends AppCompatActivity {
     TextView name,email,phoneNo;
-
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
 
     @Override
@@ -41,12 +38,12 @@ public class OwnerProfile extends AppCompatActivity {
     }
 
     public void read(){
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
+        Intent i = getIntent();
+        String uid = i.getStringExtra("uid");
         //root node Registered User
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
         //child node of root node, The Store Owners
-        databaseReference.child(firebaseUser.getUid() ).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        databaseReference.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if(task.isSuccessful()){
