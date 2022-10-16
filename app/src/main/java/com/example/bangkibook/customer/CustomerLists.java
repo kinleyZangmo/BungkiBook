@@ -4,14 +4,17 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.bangkibook.R;
 import com.example.bangkibook.storeOwner.OwnerProfile;
@@ -22,9 +25,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
-
+    SearchView searchView;
     RecyclerView recyclerView;
     String uid;
     private final FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -54,17 +59,46 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
                     CustomerInfo customerInfo = dataSnapshot.getValue(CustomerInfo.class);
                     list.add(customerInfo);
                 }
-
                 myAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+
+        //SEARCH FUNCTION
+      searchView = findViewById(R.id.searchView);
+      searchView.clearFocus();
+      searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+          @Override
+          public boolean onQueryTextSubmit(String query) {
+              return false;
+          }
+
+          @Override
+          public boolean onQueryTextChange(String newText) {
+              filterList(newText);
+              return true;
+          }
+      });
     }
+
+    private void filterList(String newText) {
+        ArrayList<CustomerInfo> filterList = new ArrayList<>();
+        for(CustomerInfo customerInfo : list){
+            if(customerInfo.getName().toLowerCase().contains(newText.toLowerCase())){
+                filterList.add(customerInfo);
+            }else if(customerInfo.getStdId().contains(newText)){
+                filterList.add(customerInfo);
+            }
+        }
+        if(filterList.isEmpty()){
+            Toast.makeText(this, "No customer found", Toast.LENGTH_SHORT).show();
+        }else{
+            myAdapter.setFilteredList(filterList);
+        }
+    }
+
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         intentAddCustomer.putExtra("uid", uid);

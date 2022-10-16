@@ -150,6 +150,7 @@ public class CustomerCredit extends AppCompatActivity {
                 int credit_amount=Integer.parseInt(addC.getText().toString()); //[2.Amount]
                 String credit_remark=remark.getText().toString(); // [3. Remarks]
                 String credit_status="add"; //[4.Status]
+
                 Toast.makeText(getApplicationContext(),"CREDIT ADDED",Toast.LENGTH_SHORT).show();
                 // YOUR CODE PROBABLY SHOULD CONTINUE FROM HERE
                 //ADD credit to database here

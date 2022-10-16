@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:searchIcon="@drawable/ic_baseline_search_24"
             android:layout_width="match_parent"
