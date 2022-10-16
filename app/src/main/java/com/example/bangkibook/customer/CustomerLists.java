@@ -2,12 +2,14 @@ package com.example.bangkibook.customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.bangkibook.R;
 import com.example.bangkibook.storeOwner.OwnerProfile;
@@ -19,8 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
 
+public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
+    SearchView searchView;
     RecyclerView recyclerView;
     String uid;
     private final FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -33,7 +36,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
 
         Intent i = getIntent();
         uid = i.getStringExtra("uid");
-//        System.out.println(uid + "working");
+//       System.out.println(uid + "working");
 
         DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         recyclerView = findViewById(R.id.userlist);
@@ -43,6 +46,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         myAdapter = new MyAdapter(this, list, this);
         recyclerView.setAdapter(myAdapter);
 
+//RETRIEVING CUSTOMER LIST DATA FROM DATABASE
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -50,29 +54,58 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
                     CustomerInfo customerInfo = dataSnapshot.getValue(CustomerInfo.class);
                     list.add(customerInfo);
                 }
-
                 myAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+
+//SEARCH FUNCTION (name or student id )
+      searchView = findViewById(R.id.searchView);
+      searchView.clearFocus();
+      searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+          @Override
+          public boolean onQueryTextSubmit(String query) {
+              return false;
+          }
+
+          @Override
+          public boolean onQueryTextChange(String newText) {
+              filterList(newText);
+              return true;
+          }
+      });
     }
+
+    private void filterList(String newText) {
+        ArrayList<CustomerInfo> filterList = new ArrayList<>();
+        for(CustomerInfo customerInfo : list){
+            if(customerInfo.getName().toLowerCase().contains(newText.toLowerCase())){
+                filterList.add(customerInfo);
+            }else if(customerInfo.getStdId().contains(newText)){
+                filterList.add(customerInfo);
+            }
+        }
+        if(filterList.isEmpty()){
+            Toast.makeText(this, "No customer found", Toast.LENGTH_SHORT).show();
+        }else{
+            myAdapter.setFilteredList(filterList);
+        }
+    }
+//ADDING NEW CUSTOMER
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         intentAddCustomer.putExtra("uid", uid);
         startActivity(intentAddCustomer);
     }
-
+//DISPLAYING OWNER PROFILE
     public void DisplayProfile(View view) {
         Intent c = new Intent(this, OwnerProfile.class);
         c.putExtra("uid", uid);
         startActivity(c);
     }
-
+//CLICKING ON CUSTOMER LIST
     @Override
     public void onNoteClick(int position) {
         Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);

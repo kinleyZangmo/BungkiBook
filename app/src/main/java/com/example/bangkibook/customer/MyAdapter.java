@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bangkibook.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
 
@@ -23,6 +24,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
         this.list = list;
         this.mOnNoteListener = onNoteListener;
     }
+
+    //TESTING
+    public void setFilteredList(ArrayList<CustomerInfo> filteredList ){
+        this.list =filteredList;
+        notifyDataSetChanged();
+
+    }
+    //TESTING
 
     @NonNull
     @Override
