@@ -188,8 +188,7 @@ public class CustomerCredit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // remark.setText("");
-                dialog.dismiss();
-
+                dialog2.dismiss();
             }
         });
 

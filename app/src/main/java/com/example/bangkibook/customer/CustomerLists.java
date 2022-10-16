@@ -1,18 +1,13 @@
 package com.example.bangkibook.customer;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,8 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+
 
 public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
     SearchView searchView;
@@ -42,7 +36,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
 
         Intent i = getIntent();
         uid = i.getStringExtra("uid");
-//        System.out.println(uid + "working");
+//       System.out.println(uid + "working");
 
         DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         recyclerView = findViewById(R.id.userlist);
@@ -52,6 +46,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         myAdapter = new MyAdapter(this, list, this);
         recyclerView.setAdapter(myAdapter);
 
+//RETRIEVING CUSTOMER LIST DATA FROM DATABASE
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -66,7 +61,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             }
         });
 
-        //SEARCH FUNCTION
+//SEARCH FUNCTION (name or student id )
       searchView = findViewById(R.id.searchView);
       searchView.clearFocus();
       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -98,24 +93,19 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             myAdapter.setFilteredList(filterList);
         }
     }
-
+//ADDING NEW CUSTOMER
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         intentAddCustomer.putExtra("uid", uid);
         startActivity(intentAddCustomer);
     }
-
-    public void viewCustomerCredit(View view) {
-        Intent credit = new Intent(this,CustomerCredit.class);
-        startActivity(credit);
-    }
-
+//DISPLAYING OWNER PROFILE
     public void DisplayProfile(View view) {
         Intent c = new Intent(this, OwnerProfile.class);
         c.putExtra("uid", uid);
         startActivity(c);
     }
-
+//CLICKING ON CUSTOMER LIST
     @Override
     public void onNoteClick(int position) {
         Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
