@@ -1,5 +1,7 @@
 package com.example.bangkibook.customer;
 
+import com.example.bangkibook.customerCreditRecord.CustomerCreditDetails;
+
 public class CustomerInfo {
     String Name,Email,StdId, PhoneNumber;
     float Credit;

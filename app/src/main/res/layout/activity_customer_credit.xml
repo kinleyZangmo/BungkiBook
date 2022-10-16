@@ -141,7 +141,7 @@
         android:background="@drawable/transaction_summary_bg"
         android:gravity="center|fill_horizontal"
         android:minWidth="340dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -149,74 +149,58 @@
         app:layout_constraintTop_toBottomOf="@+id/clearnum"
         app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:minWidth="60dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView4"
+
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAlignment="center"
+                    android:text="Date"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="Amount"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Remark"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Clear/Add"
+                    android:textAlignment="center"/>
+            </TableRow>
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView10"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/credit_details"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Amount"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView"
+                tools:context="."
+                tools:ignore="MissingConstraints"
+                >
 
-        </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Remarks"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Clear/Add"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

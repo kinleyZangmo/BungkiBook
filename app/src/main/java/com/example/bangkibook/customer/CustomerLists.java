@@ -1,16 +1,12 @@
 package com.example.bangkibook.customer;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.bangkibook.R;
@@ -69,11 +65,6 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         intentAddCustomer.putExtra("uid", uid);
         startActivity(intentAddCustomer);
-    }
-
-    public void viewCustomerCredit(View view) {
-        Intent credit = new Intent(this,CustomerCredit.class);
-        startActivity(credit);
     }
 
     public void DisplayProfile(View view) {

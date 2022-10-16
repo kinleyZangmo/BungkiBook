@@ -4,10 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.icu.text.SimpleDateFormat;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,32 +13,42 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bangkibook.R;
+import com.example.bangkibook.customerCreditRecord.CustomerCreditDetails;
+import com.example.bangkibook.customerCreditRecord.CustomerDetailAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class CustomerCredit extends AppCompatActivity {
     Dialog dialog,dialog2;
     String stdId,uid;
     private  TextView name, amount;
 
-    ArrayList<CustomerInfo> list =new ArrayList<>();
-    private Object DataSnapshot;
+
+
+
+    RecyclerView recyclerView;
+    CustomerDetailAdapter customerDetailAdapter;
+    ArrayList<CustomerCreditDetails> list = new ArrayList<>();
+
     public String nameV,amountV,emailV,phoneNoV;
 
     EditText addC,clearC;
     Button add_btn,clear_btn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +63,9 @@ public class CustomerCredit extends AppCompatActivity {
         Intent i = getIntent();
         uid = i.getStringExtra("uid");
         stdId = i.getStringExtra("stdId");
-        System.out.println(uid + "helllo working " + stdId);
 
         name = findViewById(R.id.customerName);
         amount = findViewById(R.id.Amount);
-
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         root.child(stdId).get().addOnCompleteListener(new OnCompleteListener<com.google.firebase.database.DataSnapshot>() {
@@ -104,6 +109,29 @@ public class CustomerCredit extends AppCompatActivity {
             }
         });
 
+//        displaying the credit details in tabular form using recycle view
+//        recyclerView = findViewById(R.id.credit_details);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        customerDetailAdapter = new CustomerDetailAdapter(this, list);
+//        recyclerView.setAdapter(customerDetailAdapter);
+//        root.child(stdId).child("creditDetails").child("2022 10 17 01:27 AM").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    CustomerCreditDetails customerCreditDetails = dataSnapshot.getValue(CustomerCreditDetails.class);
+//                    list.add(customerCreditDetails);
+//                }
+//                customerDetailAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
     }
 
     //credit details
@@ -146,15 +174,34 @@ public class CustomerCredit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                 //[1.Date] ??   String f= String.valueOf(LocalDate.now());
+
+                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm a");
+                String currentDateandTime = sdf.format(new Date());
+
                 int credit_amount=Integer.parseInt(addC.getText().toString()); //[2.Amount]
                 String credit_remark=remark.getText().toString(); // [3. Remarks]
                 String credit_status="add"; //[4.Status]
+
+                CustomerCreditDetails customerCreditDetails = new CustomerCreditDetails(date,credit_amount,credit_remark,credit_status);
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
+                root.child(stdId).child("creditDetails").child(currentDateandTime).setValue(customerCreditDetails);
+
+                int updatedAmount = Integer.parseInt(amountV) + credit_amount;
+                root.child(stdId).child("credit").setValue(updatedAmount);
+
+
                 Toast.makeText(getApplicationContext(),"CREDIT ADDED",Toast.LENGTH_SHORT).show();
-                // YOUR CODE PROBABLY SHOULD CONTINUE FROM HERE
-                //ADD credit to database here
+
 
                 dialog.dismiss();
+                finish();
+                overridePendingTransition(0,0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+
+
             }
         });
 
@@ -196,25 +243,40 @@ public class CustomerCredit extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 //??DATE   String f= String.valueOf(LocalDate.now()); [1.Date]
-                int credit_amount=Integer.parseInt(clearC.getText().toString()); //[2.Amount]
-                String credit_remark=remark.getText().toString();  // [3. Remarks]
+                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm a");
+                String currentDateandTime = sdf.format(new Date()); //[1.Date]
+
+                int credit_amount= Integer.parseInt(clearC.getText().toString()); //[2.Amount]
+                String credit_remark= remark.getText().toString();  // [3. Remarks]
                 String credit_status="clear"; //[4.Status]
 
-                Toast.makeText(getApplicationContext(),"CREDIT CLEARED",Toast.LENGTH_SHORT).show();
-                dialog2.dismiss();
+                CustomerCreditDetails customerCreditDetails = new CustomerCreditDetails(date,credit_amount,credit_remark,credit_status);
 
-                // YOUR CODE PROBABLY SHOULD CONTINUE FROM HERE
-                //CLEAR credit from database here
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
+                root.child(stdId).child("creditDetails").child(currentDateandTime).setValue(customerCreditDetails);
+
+                int updatedAmount = Integer.parseInt(amountV) - credit_amount;
+                root.child(stdId).child("credit").setValue(updatedAmount);
+
+                Toast.makeText(getApplicationContext(),"CREDIT CLEARED",Toast.LENGTH_SHORT).show();
+
+                dialog2.dismiss();
+                finish();
+                overridePendingTransition(0,0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
 
             }
         });
-
         dialog2.show();
+
+
     }
 
     public void DisplayCustomerProfile(View view) {
-        Intent customerProfile = new Intent(this,CustomerProfile.class);
+        Intent customerProfile = new Intent(this, CustomerProfile.class);
 
         customerProfile.putExtra("cSid",stdId);
         customerProfile.putExtra("cName",nameV);
