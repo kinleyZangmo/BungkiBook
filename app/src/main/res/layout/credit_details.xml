@@ -2,7 +2,7 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TableRow
         android:padding="5dp">
@@ -10,7 +10,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="date"
             android:paddingLeft="5dp"/>
         <TextView
@@ -19,21 +19,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="amount"
-            android:textAlignment="center"/>
+            android:gravity="left"/>
         <TextView
             android:id="@+id/remark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="remark"
-            android:textAlignment="center"/>
+            android:gravity="left"/>
         <TextView
             android:id="@+id/clearOrAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="clearOrAdd"
-            android:textAlignment="center"/>
+            />
     </TableRow>
 
 </TableLayout>

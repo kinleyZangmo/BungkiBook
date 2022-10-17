@@ -4,6 +4,8 @@ public class CustomerCreditDetails {
     String date,remark,addOrClear;
     int amount;
 
+    private CustomerCreditDetails(){}
+
     public CustomerCreditDetails(String date,int amount, String remark, String addOrClear) {
         this.date = date;
         this.remark = remark;

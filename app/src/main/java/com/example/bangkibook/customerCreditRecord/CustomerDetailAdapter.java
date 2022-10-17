@@ -33,7 +33,7 @@ public class CustomerDetailAdapter extends RecyclerView.Adapter<CustomerDetailAd
         CustomerCreditDetails customerCreditDetails = list.get(position);
 
         holder.date.setText(customerCreditDetails.getDate());
-        holder.amount.setText(customerCreditDetails.getAmount());
+        holder.amount.setText(String.valueOf(customerCreditDetails.getAmount()));
         holder.remark.setText(customerCreditDetails.getRemark());
         holder.clearOrAdd.setText(customerCreditDetails.getAddOrClear());
 

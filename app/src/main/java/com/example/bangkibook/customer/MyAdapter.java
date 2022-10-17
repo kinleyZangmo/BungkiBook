@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bangkibook.R;
 
 import java.util.ArrayList;
-import java.util.List;
+
+
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
 
@@ -45,13 +46,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
         CustomerInfo customerInfo = list.get(position);
         holder.name.setText(customerInfo.getName());
         holder.sid.setText(customerInfo.getStdId());
-
     }
 
     @Override
     public int getItemCount() {
         return list.size();
-
     }
 
     public static class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

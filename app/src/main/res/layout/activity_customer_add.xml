@@ -113,7 +113,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="Phone No."
-        android:inputType="phone"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
@@ -130,7 +129,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="14dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar

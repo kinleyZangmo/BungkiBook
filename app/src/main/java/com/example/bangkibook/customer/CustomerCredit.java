@@ -38,9 +38,6 @@ public class CustomerCredit extends AppCompatActivity {
     String stdId,uid;
     private  TextView name, amount;
 
-
-
-
     RecyclerView recyclerView;
     CustomerDetailAdapter customerDetailAdapter;
     ArrayList<CustomerCreditDetails> list = new ArrayList<>();
@@ -109,29 +106,27 @@ public class CustomerCredit extends AppCompatActivity {
             }
         });
 
-//        displaying the credit details in tabular form using recycle view
-//        recyclerView = findViewById(R.id.credit_details);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        customerDetailAdapter = new CustomerDetailAdapter(this, list);
-//        recyclerView.setAdapter(customerDetailAdapter);
-//        root.child(stdId).child("creditDetails").child("2022 10 17 01:27 AM").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    CustomerCreditDetails customerCreditDetails = dataSnapshot.getValue(CustomerCreditDetails.class);
-//                    list.add(customerCreditDetails);
-//                }
-//                customerDetailAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        //displaying the credit details in tabular form using recycle view
+        recyclerView = findViewById(R.id.credit_details);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        customerDetailAdapter = new CustomerDetailAdapter(this, list);
+        recyclerView.setAdapter(customerDetailAdapter);
+        root.child(stdId).child("creditDetails").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    CustomerCreditDetails customerCreditDetails = dataSnapshot.getValue(CustomerCreditDetails.class);
+                    list.add(customerCreditDetails);
+                }
+                customerDetailAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     //credit details
@@ -140,7 +135,7 @@ public class CustomerCredit extends AppCompatActivity {
 //3. Remarks
 //4. Status(clear/add)
 
-    //Dialog Box
+//ADDING CREDIT HERE
     private void openAddDialog() {
         dialog=new Dialog(this);
         dialog.setContentView(R.layout.add_credit_dialog);
@@ -173,10 +168,8 @@ public class CustomerCredit extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm a");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
                 String currentDateandTime = sdf.format(new Date());
 
                 int credit_amount=Integer.parseInt(addC.getText().toString()); //[2.Amount]
@@ -191,24 +184,19 @@ public class CustomerCredit extends AppCompatActivity {
                 int updatedAmount = Integer.parseInt(amountV) + credit_amount;
                 root.child(stdId).child("credit").setValue(updatedAmount);
 
-
                 Toast.makeText(getApplicationContext(),"CREDIT ADDED",Toast.LENGTH_SHORT).show();
-
 
                 dialog.dismiss();
                 finish();
                 overridePendingTransition(0,0);
                 startActivity(getIntent());
                 overridePendingTransition(0, 0);
-
-
             }
         });
-
         dialog.show();
     }
 
-
+//CLEARING CREDIT HERE
     private void openClearDialog() {
         dialog2=new Dialog(this);
         dialog2.setContentView(R.layout.add_credit_dialog);
@@ -271,8 +259,6 @@ public class CustomerCredit extends AppCompatActivity {
             }
         });
         dialog2.show();
-
-
     }
 
     public void DisplayCustomerProfile(View view) {

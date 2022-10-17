@@ -108,10 +108,12 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
 //CLICKING ON CUSTOMER LIST
     @Override
     public void onNoteClick(int position) {
+
         Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
 
         intent.putExtra("uid", uid);
         intent.putExtra("stdId", list.get(position).getStdId());
+        list.clear();
         startActivity(intent);
     }
 
