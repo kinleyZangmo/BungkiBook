@@ -21,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
     SearchView searchView;
     RecyclerView recyclerView;
@@ -36,16 +35,13 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
 
         Intent i = getIntent();
         uid = i.getStringExtra("uid");
-//       System.out.println(uid + "working");
 
         DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         recyclerView = findViewById(R.id.userlist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         myAdapter = new MyAdapter(this, list, this);
         recyclerView.setAdapter(myAdapter);
-
 
 //RETRIEVING CUSTOMER LIST DATA FROM DATABASE
         root.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,23 +57,19 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(),error.getMessage().toString(),Toast.LENGTH_LONG);
             }
-
         });
 
 //SEARCH FUNCTION (name or student id )
       searchView = findViewById(R.id.searchView);
-      searchView.clearFocus();
       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
           @Override
           public boolean onQueryTextSubmit(String query) {
               return false;
           }
-
           @Override
           public boolean onQueryTextChange(String newText) {
               filterList(newText);
-              return true;
-          }
+              return true;}
       });
     }
 
@@ -92,12 +84,11 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             }
         }
         if(filterList.isEmpty()){
-            Toast.makeText(this, "No customer found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Customer Not Found", Toast.LENGTH_SHORT).show();
         }else{
             myAdapter.setFilteredList(filterList);
         }
     }
-
 
 //ADDING NEW CUSTOMER
     public void addCustomer(View view) {
@@ -106,7 +97,6 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         startActivity(intentAddCustomer);
     }
 
-
 //DISPLAYING OWNER PROFILE
     public void DisplayProfile(View view) {
         Intent c = new Intent(this, OwnerProfile.class);
@@ -114,16 +104,12 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         startActivity(c);
     }
 
-
 //CLICKING ON CUSTOMER LIST
     @Override
     public void onNoteClick(int position) {
-
         Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
         intent.putExtra("uid", uid);
         intent.putExtra("stdId", list.get(position).getStdId());
         startActivity(intent);
-
     }
-
 }

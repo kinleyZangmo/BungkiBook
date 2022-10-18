@@ -13,9 +13,8 @@ import com.example.bangkibook.R;
 
 import java.util.ArrayList;
 
-
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
+    CustomerInfo customerInfo;
 
     Context context;
     ArrayList<CustomerInfo> list;
@@ -26,13 +25,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
         this.mOnNoteListener = onNoteListener;
     }
 
-    //TESTING
     public void setFilteredList(ArrayList<CustomerInfo> filteredList ){
         this.list =filteredList;
         notifyDataSetChanged();
 
     }
-    //TESTING
 
     @NonNull
     @Override
@@ -43,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        CustomerInfo customerInfo = list.get(position);
+        customerInfo = list.get(position);
         holder.name.setText(customerInfo.getName());
         holder.sid.setText(customerInfo.getStdId());
         holder.setIsRecyclable(false);
@@ -62,7 +59,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
     public int getItemViewType(int position){
         return position;
     }
-
     public static class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name, sid;
         OnNoteListener onNoteListener;
@@ -73,10 +69,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
             name = itemView.findViewById(R.id.name);
             sid = itemView.findViewById(R.id.stdId);
             this.onNoteListener = onNoteListener;
-
             itemView.setOnClickListener(this);
         }
-
         @Override
         public void onClick(View view) {
             onNoteListener.onNoteClick(getAdapterPosition());
