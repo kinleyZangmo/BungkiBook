@@ -31,12 +31,10 @@ public class CustomerDetailAdapter extends RecyclerView.Adapter<CustomerDetailAd
     @Override
     public void onBindViewHolder(@NonNull CustomerDetailAdapter.myViewHolder holder, int position) {
         CustomerCreditDetails customerCreditDetails = list.get(position);
-
         holder.date.setText(customerCreditDetails.getDate());
         holder.amount.setText(String.valueOf(customerCreditDetails.getAmount()));
         holder.remark.setText(customerCreditDetails.getRemark());
         holder.clearOrAdd.setText(customerCreditDetails.getAddOrClear());
-
     }
 
     @Override
@@ -44,6 +42,16 @@ public class CustomerDetailAdapter extends RecyclerView.Adapter<CustomerDetailAd
         return list.size();
 
     }
+
+    @Override
+    public long getItemId(int position){
+        return position;
+    }
+    @Override
+    public int getItemViewType(int position){
+        return position;
+    }
+
 
     public static class myViewHolder extends RecyclerView.ViewHolder {
         TextView date, amount, remark, clearOrAdd;

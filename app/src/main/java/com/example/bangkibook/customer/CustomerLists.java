@@ -46,8 +46,9 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         myAdapter = new MyAdapter(this, list, this);
         recyclerView.setAdapter(myAdapter);
 
+
 //RETRIEVING CUSTOMER LIST DATA FROM DATABASE
-        root.addValueEventListener(new ValueEventListener() {
+        root.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -58,7 +59,9 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),error.getMessage().toString(),Toast.LENGTH_LONG);
             }
+
         });
 
 //SEARCH FUNCTION (name or student id )
@@ -78,6 +81,7 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
       });
     }
 
+    //SEARCH FILTER
     private void filterList(String newText) {
         ArrayList<CustomerInfo> filterList = new ArrayList<>();
         for(CustomerInfo customerInfo : list){
@@ -93,28 +97,33 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             myAdapter.setFilteredList(filterList);
         }
     }
+
+
 //ADDING NEW CUSTOMER
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         intentAddCustomer.putExtra("uid", uid);
         startActivity(intentAddCustomer);
     }
+
+
 //DISPLAYING OWNER PROFILE
     public void DisplayProfile(View view) {
         Intent c = new Intent(this, OwnerProfile.class);
         c.putExtra("uid", uid);
         startActivity(c);
     }
+
+
 //CLICKING ON CUSTOMER LIST
     @Override
     public void onNoteClick(int position) {
 
         Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
-
         intent.putExtra("uid", uid);
         intent.putExtra("stdId", list.get(position).getStdId());
-        list.clear();
         startActivity(intent);
+
     }
 
 }

@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Nu.8000"
+        android:text="Nu.0"
         android:textColor="@color/titles"
         android:textSize="40sp"
         android:textStyle="bold"

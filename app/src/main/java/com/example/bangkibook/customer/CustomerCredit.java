@@ -43,7 +43,6 @@ public class CustomerCredit extends AppCompatActivity {
     ArrayList<CustomerCreditDetails> list = new ArrayList<>();
 
     public String nameV,amountV,emailV,phoneNoV;
-
     EditText addC,clearC;
     Button add_btn,clear_btn;
 
@@ -95,14 +94,36 @@ public class CustomerCredit extends AppCompatActivity {
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAddDialog();
+
+                if(addC.getText().toString().isEmpty()){
+                     addC.requestFocus();
+                     addC.setError("Input required");
+                }else if(Integer.parseInt(addC.getText().toString())==0){
+                    addC.requestFocus();
+                    addC.setError("Cannot add credit Nu.0");
+                }else{
+                    openAddDialog();
+                }
             }
         });
         //CLEARING CUSTOMER CREDIT
         clear_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openClearDialog();
+                if(clearC.getText().toString().isEmpty()){
+                    clearC.requestFocus();
+                    clearC.setError("Input required");
+                }else if(Integer.parseInt(clearC.getText().toString())==0){
+                    clearC.requestFocus();
+                    clearC.setError("Cannot clear credit Nu.0");
+                }else if(Integer.parseInt(clearC.getText().toString())>Integer.parseInt(amountV)){
+                    clearC.requestFocus();
+                    clearC.setError("Error. Credit balance will be negative");
+                }
+                else{
+                    openClearDialog();
+                }
+
             }
         });
 
@@ -140,6 +161,7 @@ public class CustomerCredit extends AppCompatActivity {
         dialog=new Dialog(this);
         dialog.setContentView(R.layout.add_credit_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
 
         ImageView imageViewClose = dialog.findViewById(R.id.imageViewClose);
         Button btn_ok= dialog.findViewById(R.id.okBTN);
@@ -201,6 +223,7 @@ public class CustomerCredit extends AppCompatActivity {
         dialog2=new Dialog(this);
         dialog2.setContentView(R.layout.add_credit_dialog);
         dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog2.getWindow().getAttributes().windowAnimations = R.style.animation;
 
         ImageView imageViewClose = dialog2.findViewById(R.id.imageViewClose);
         Button btn_ok = dialog2.findViewById(R.id.okBTN);
@@ -222,7 +245,7 @@ public class CustomerCredit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // remark.setText("");
-                dialog.dismiss();
+                dialog2.dismiss();
 
             }
         });
@@ -263,7 +286,6 @@ public class CustomerCredit extends AppCompatActivity {
 
     public void DisplayCustomerProfile(View view) {
         Intent customerProfile = new Intent(this, CustomerProfile.class);
-
         customerProfile.putExtra("cSid",stdId);
         customerProfile.putExtra("cName",nameV);
         customerProfile.putExtra("cEmail",emailV);

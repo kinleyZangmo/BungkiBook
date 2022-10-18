@@ -3,14 +3,19 @@ package com.example.bangkibook.storeOwner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bangkibook.R;
@@ -23,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class OwnerSignUp extends AppCompatActivity {
+    Dialog d;
 
     private EditText storeName,email,phoneNo,password,confirmPassword;
     Button buttonCreateAccount;
@@ -115,26 +121,15 @@ public class OwnerSignUp extends AppCompatActivity {
                     referenceProfile.child(firebaseUser.getUid()).setValue(WriteUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-
-                                 //when value of data is successfully stored in database
+                            //when value of data is successfully stored in database
                            if(task.isSuccessful()){
                                //send email verification
                                firebaseUser.sendEmailVerification();
                                progressBar.setVisibility(View.GONE);
-                               Toast.makeText(OwnerSignUp.this, "User Registered Successfully. Please verify your email and login", Toast.LENGTH_LONG).show();
-
-                               //Open Login Activity (our main page)
-                               Intent registered = new Intent(getApplicationContext(), OwnerLogin.class);
-
-                               //removing previous activities to avoid backstack
-                               //To prevent user from returning back to sign up activity on pressing back button after signup
-                              // registered.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                               startActivity(registered);
-                               finish(); //to close signup activity
+                               openRegistrationSuc();
                            }else{
                                progressBar.setVisibility(View.GONE);
                                Toast.makeText(OwnerSignUp.this, "Registration Failed .Please Check Network", Toast.LENGTH_SHORT).show();
-
                            }
                         }
                     });
@@ -148,10 +143,37 @@ public class OwnerSignUp extends AppCompatActivity {
 //                Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
 //                startActivity(registered);
             }
+
         });
     }
 
+    private void openRegistrationSuc() {
+        d=new Dialog(this);
+        d.setContentView(R.layout.alert_dialog);
+        d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        d.getWindow().getAttributes().windowAnimations = R.style.animation;
+        TextView message = d.findViewById(R.id.alertMessage);
+        message.setText("Registration Successful. Please verify your email before logging in.");
+
+        ImageView imageViewClose = d.findViewById(R.id.imageViewClose);
+        imageViewClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+
+        Button ok = d.findViewById(R.id.okBTN);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+        d.show();
+    }
 }
+
+
 // 1.Create user
 // 2.Save user data into database
-// 3.

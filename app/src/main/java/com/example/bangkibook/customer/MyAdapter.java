@@ -46,11 +46,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
         CustomerInfo customerInfo = list.get(position);
         holder.name.setText(customerInfo.getName());
         holder.sid.setText(customerInfo.getStdId());
+        holder.setIsRecyclable(false);
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    @Override
+    public long getItemId(int position){
+        return position;
+    }
+    @Override
+    public int getItemViewType(int position){
+        return position;
     }
 
     public static class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
