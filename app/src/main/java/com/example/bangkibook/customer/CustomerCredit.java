@@ -143,7 +143,6 @@ public class CustomerCredit extends AppCompatActivity {
                 }
                 customerDetailAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -243,11 +242,7 @@ public class CustomerCredit extends AppCompatActivity {
         //Cancel
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-               // remark.setText("");
-                dialog2.dismiss();
-
-            }
+            public void onClick(View v) {dialog2.dismiss();}
         });
 
         //final clear credit/confirm button
@@ -263,7 +258,6 @@ public class CustomerCredit extends AppCompatActivity {
                 String credit_status="clear"; //[4.Status]
 
                 CustomerCreditDetails customerCreditDetails = new CustomerCreditDetails(date,credit_amount,credit_remark,credit_status);
-
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
                 root.child(stdId).child("creditDetails").child(currentDateandTime).setValue(customerCreditDetails);
@@ -278,7 +272,6 @@ public class CustomerCredit extends AppCompatActivity {
                 overridePendingTransition(0,0);
                 startActivity(getIntent());
                 overridePendingTransition(0, 0);
-
             }
         });
         dialog2.show();
