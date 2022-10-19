@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".storeOwner.OwnerLogin">
 
@@ -12,16 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         app:cardCornerRadius="70dp"
         >
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/form"
-            />
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/bblogo" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -31,8 +30,8 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/bungki_book"
-        android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textColor="@color/titles"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,8 +42,11 @@
         android:hint="Email"
         android:inputType="textPassword"
         android:textColorHint="@color/buttons"
-        android:textColor="@color/white"
+        android:textColor="@color/titles"
         app:boxBackgroundMode="outline"
+        app:boxStrokeWidth="2dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -69,6 +71,9 @@
         android:textColorHint="@color/buttons"
         android:textColor="@color/white"
         app:boxBackgroundMode="outline"
+        app:boxStrokeWidth="2dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:passwordToggleEnabled="true"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -113,6 +118,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:background="@drawable/buttonradius"
+        android:drawableLeft="@drawable/ic_baseline_signup"
         android:onClick="signupClick"
         android:text="Sign Up"
         android:textSize="20sp" />

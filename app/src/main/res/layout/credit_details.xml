@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TableRow
         android:padding="5dp">
+
         <TextView
             android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="date"
-            android:paddingLeft="5dp"/>
-        <TextView
-            android:id="@+id/amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="amount"
-            android:gravity="left"/>
-        <TextView
-            android:id="@+id/remark"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:paddingLeft="5dp"
+            android:text="date"
+            android:textColor="@color/titles" />
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="amount"
+            android:textAlignment="viewStart"
+            android:textColor="@color/titles" />
+
+        <TextView
+            android:id="@+id/remark"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
             android:text="remark"
-            android:gravity="left"/>
+            android:textAlignment="viewStart"
+            android:textColor="@color/titles" />
+
         <TextView
             android:id="@+id/clearOrAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="clearOrAdd"
-            />
+            android:textColor="@color/titles"
+            tools:textAlignment="viewStart" />
     </TableRow>
 
 </TableLayout>

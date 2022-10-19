@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/background"
     tools:context=".customer.CustomerCredit">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/OwnerProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="#00FFFFFF"
+        android:elevation="0dp"
         android:onClick="DisplayCustomerProfile"
         android:padding="5dp"
-        android:src="@drawable/ic_baseline_perm_identity_24"
+        android:src="@drawable/ic_baseline_person_24"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toEndOf="@+id/customerName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +46,8 @@
         android:minHeight="48dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         android:ems="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Amount">
@@ -62,7 +67,7 @@
             app:boxStrokeWidthFocused="0dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/addbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +75,7 @@
         android:background="@drawable/whiteborder_radius"
         android:text="Add"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/addnumber"
@@ -98,7 +103,7 @@
         android:background="@drawable/whiteborder_radius"
         android:text="Clear"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/background"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/addbtn"
         app:layout_constraintHorizontal_bias="1.0"
@@ -138,7 +143,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/transaction_summary_bg"
+        android:background="@drawable/real_trans_bg"
         android:gravity="center|fill_horizontal"
         android:minWidth="340dp"
         android:orientation="vertical"
@@ -150,55 +155,58 @@
         app:layout_constraintVertical_bias="0.0">
 
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
 
-            <TableRow
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:text="Date"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:text="Amount"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="Remark"
-                    android:textAlignment="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Clear/Add"
-                    android:textAlignment="center"/>
-            </TableRow>
+                android:layout_weight="2"
+                android:text="Date"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Amount"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Remark"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Clear/Add"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </TableRow>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/credit_details"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchView"
-                tools:context="."
-                tools:ignore="MissingConstraints"
-                >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/credit_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            tools:context="."
+            tools:ignore="MissingConstraints">
 
-            </androidx.recyclerview.widget.RecyclerView>
-
-
-
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </LinearLayout>
