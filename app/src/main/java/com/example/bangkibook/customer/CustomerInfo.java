@@ -1,15 +1,14 @@
 package com.example.bangkibook.customer;
 
-import com.example.bangkibook.customerCreditRecord.CustomerCreditDetails;
 
-public class CustomerInfo {
+import java.io.Serializable;
+
+public class CustomerInfo implements Serializable {
     String Name,Email,StdId, PhoneNumber;
     float Credit;
-    CustomerCreditDetails customerCreditDetails;
 
     public CustomerInfo() {
     }
-
     public CustomerInfo(String name, String email, String phoneNumber, String stdId, float credit) {
         this.Name = name;
         this.Email = email;

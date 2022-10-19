@@ -5,79 +5,63 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.bangkibook.R;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder>  {
-    CustomerInfo customerInfo;
+    public ArrayList<CustomerInfo> customerInfoList;
+    public Context context;
+    public CustomerClickListener customerClickListener;
 
-    Context context;
-    ArrayList<CustomerInfo> list;
-    private final OnNoteListener mOnNoteListener;
-    public MyAdapter(Context context, ArrayList<CustomerInfo> list, OnNoteListener onNoteListener) {
+    public interface CustomerClickListener{
+        void selectedCustomer(CustomerInfo customerInfo);
+    }
+
+    public MyAdapter(ArrayList<CustomerInfo> customerInfoList, Context context,CustomerClickListener customerClickListener) {
+        this.customerInfoList = customerInfoList;
         this.context = context;
-        this.list = list;
-        this.mOnNoteListener = onNoteListener;
+        this.customerClickListener=customerClickListener;
     }
-
     public void setFilteredList(ArrayList<CustomerInfo> filteredList ){
-        this.list =filteredList;
-        notifyDataSetChanged();
-
-    }
+        this.customerInfoList =filteredList;
+        notifyDataSetChanged();}
 
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Context context=parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.singlerow, parent, false);
-        return new myViewHolder(view,mOnNoteListener);
+        return new myViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        customerInfo = list.get(position);
+        CustomerInfo customerInfo = customerInfoList.get(position);
         holder.name.setText(customerInfo.getName());
         holder.sid.setText(customerInfo.getStdId());
-        holder.setIsRecyclable(false);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customerClickListener.selectedCustomer(customerInfo);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return customerInfoList.size();
     }
 
-    @Override
-    public long getItemId(int position){
-        return position;
-    }
-    @Override
-    public int getItemViewType(int position){
-        return position;
-    }
-    public static class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView name, sid;
-        OnNoteListener onNoteListener;
+    public static class myViewHolder extends RecyclerView.ViewHolder {
+        private TextView name, sid;
 
-        public myViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
+        public myViewHolder(@NonNull View itemView) {
             super(itemView);
-
             name = itemView.findViewById(R.id.name);
             sid = itemView.findViewById(R.id.stdId);
-            this.onNoteListener = onNoteListener;
-            itemView.setOnClickListener(this);
-        }
-        @Override
-        public void onClick(View view) {
-            onNoteListener.onNoteClick(getAdapterPosition());
         }
     }
-    public interface OnNoteListener{
-        void onNoteClick(int position);
-    }
-
 }

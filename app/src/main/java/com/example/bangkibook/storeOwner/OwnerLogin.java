@@ -69,7 +69,6 @@ public class OwnerLogin extends AppCompatActivity {
 
         }
     }
-
     private void loginUser(String txtEmail, String txtPassword) {
         //login using email and password
 
@@ -116,7 +115,6 @@ public class OwnerLogin extends AppCompatActivity {
                 d.dismiss();
             }
         });
-
         Button ok = d.findViewById(R.id.okBTN);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override

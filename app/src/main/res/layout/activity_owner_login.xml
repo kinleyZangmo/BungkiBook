@@ -20,7 +20,8 @@
             android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/form" />
+            android:src="@drawable/form"
+            />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -30,39 +31,59 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/bungki_book"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/user_email"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/borderradius"
+        android:layout_marginTop="24dp"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="10dp"
+        android:inputType="textPassword"
+        android:textColorHint="@color/buttons"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textColorHint="#FFFFFF"
-        />
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
 
-    <EditText
-        android:id="@+id/user_password"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="14dp"
+            android:textSize="18sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/borderradius"
+        android:layout_marginTop="24dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="10dp"
+        android:textColorHint="@color/buttons"
         android:textColor="@color/white"
-        android:textColorHint="#FFFFFF"
-        android:textSize="20sp"
-        />
+        app:boxBackgroundMode="outline"
+        app:passwordToggleEnabled="true"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="14dp"
+            android:textSize="18sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/login"
@@ -83,7 +104,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:text="Dont have an account?"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/signup"

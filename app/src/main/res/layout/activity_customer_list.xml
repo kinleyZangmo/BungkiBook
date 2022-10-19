@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Customer List"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
             android:queryHint="Enter name or student ID"
             android:iconifiedByDefault="false"
             android:background="@drawable/borderradius"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             />
         <androidx.recyclerview.widget.RecyclerView
@@ -73,7 +73,6 @@
         android:onClick="DisplayProfile"
         android:backgroundTint="@color/purple_200"
    />
-
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

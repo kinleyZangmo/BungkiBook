@@ -21,29 +21,31 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNoteListener{
-    SearchView searchView;
+public class CustomerLists extends AppCompatActivity implements MyAdapter.CustomerClickListener {
     RecyclerView recyclerView;
-    String uid;
-    private final FirebaseDatabase db = FirebaseDatabase.getInstance();
     MyAdapter myAdapter;
     ArrayList<CustomerInfo> list =new ArrayList<>();
+    SearchView searchView;
+
+    String uid;
+    private final FirebaseDatabase db = FirebaseDatabase.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_list);
-
         Intent i = getIntent();
         uid = i.getStringExtra("uid");
 
-        DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         recyclerView = findViewById(R.id.userlist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myAdapter = new MyAdapter(this, list, this);
+
+        myAdapter = new MyAdapter(list,this,this);
         recyclerView.setAdapter(myAdapter);
 
-//RETRIEVING CUSTOMER LIST DATA FROM DATABASE
+        //RETRIEVING CUSTOMER LIST DATA FROM DATABASE
+        DatabaseReference root = db.getReference().child("Registered Users").child(uid).child("customers");
         root.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -59,18 +61,19 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
             }
         });
 
-//SEARCH FUNCTION (name or student id )
-      searchView = findViewById(R.id.searchView);
-      searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-          @Override
-          public boolean onQueryTextSubmit(String query) {
-              return false;
-          }
-          @Override
-          public boolean onQueryTextChange(String newText) {
-              filterList(newText);
-              return true;}
-      });
+
+        //SEARCH FUNCTION (name or student id )
+        searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;}
+        });
     }
 
     //SEARCH FILTER
@@ -90,26 +93,25 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.OnNote
         }
     }
 
-//ADDING NEW CUSTOMER
+    @Override
+    public void selectedCustomer(CustomerInfo customerInfo) {
+        Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
+        intent.putExtra("uid", uid);
+        intent.putExtra("stdId", customerInfo.getStdId());
+        startActivity(intent);
+    }
+
+    //ADDING NEW CUSTOMER
     public void addCustomer(View view) {
         Intent intentAddCustomer = new Intent(this, CustomerAdd.class);
         intentAddCustomer.putExtra("uid", uid);
         startActivity(intentAddCustomer);
     }
 
-//DISPLAYING OWNER PROFILE
+    //DISPLAYING OWNER PROFILE
     public void DisplayProfile(View view) {
         Intent c = new Intent(this, OwnerProfile.class);
         c.putExtra("uid", uid);
         startActivity(c);
-    }
-
-//CLICKING ON CUSTOMER LIST
-    @Override
-    public void onNoteClick(int position) {
-        Intent intent = new Intent(CustomerLists.this,CustomerCredit.class);
-        intent.putExtra("uid", uid);
-        intent.putExtra("stdId", list.get(position).getStdId());
-        startActivity(intent);
     }
 }
