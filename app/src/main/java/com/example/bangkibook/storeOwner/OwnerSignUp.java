@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -126,7 +127,8 @@ public class OwnerSignUp extends AppCompatActivity {
                                //send email verification
                                firebaseUser.sendEmailVerification();
                                progressBar.setVisibility(View.GONE);
-                               openRegistrationSuc();
+                               openALERT_Dialog("Registration successful","Please verify your email before logging in.");
+
                            }else{
                                progressBar.setVisibility(View.GONE);
                                Toast.makeText(OwnerSignUp.this, "Registration Failed .Please Check Network", Toast.LENGTH_SHORT).show();
@@ -136,24 +138,21 @@ public class OwnerSignUp extends AppCompatActivity {
 
                 }else{
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(OwnerSignUp.this, "User Registration failed. Please try again", Toast.LENGTH_SHORT).show();
+                    openALERT_Dialog("Sign in failed",task.getException().getMessage());
                 }
-//                progressBar.setVisibility(View.GONE);
-//                Toast.makeText(signup.this, "ONLY REGISTERED", Toast.LENGTH_SHORT).show();
-//                Intent registered = new Intent(getApplicationContext(), Customer_Main.class);
-//                startActivity(registered);
             }
-
         });
     }
 
-    private void openRegistrationSuc() {
+    private void openALERT_Dialog(String Atitle,String Amessage) {
         d=new Dialog(this);
         d.setContentView(R.layout.alert_dialog);
         d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         d.getWindow().getAttributes().windowAnimations = R.style.animation;
+        TextView title = d.findViewById(R.id.alertMessageTitle);
         TextView message = d.findViewById(R.id.alertMessage);
-        message.setText("Registration Successful. Please verify your email before logging in.");
+        title.setText(Atitle);
+        message.setText(Amessage);
 
         ImageView imageViewClose = d.findViewById(R.id.imageViewClose);
         imageViewClose.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +173,3 @@ public class OwnerSignUp extends AppCompatActivity {
     }
 }
 
-
-// 1.Create user
-// 2.Save user data into database

@@ -32,22 +32,34 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/close" />
 
+            <TextView
+                android:id="@+id/alertMessageTitle"
+                android:layout_width="282dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="32dp"
+                android:text="TITLE HERE"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.279"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/alertMessage"
-                android:layout_width="302dp"
-                android:layout_height="102dp"
-                android:layout_marginTop="40dp"
-                android:gravity="center"
+                android:layout_width="304dp"
+                android:layout_height="82dp"
+                android:layout_marginTop="8dp"
                 android:text="General alert message here"
-                android:textColor="@color/white"
-                android:textSize="21sp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
 
+
+                android:textSize="21sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.403"
+                app:layout_constraintHorizontal_bias="0.434"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/alertMessageTitle" />
 
             <Button
                 android:id="@+id/okBTN"
@@ -60,7 +72,7 @@
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.879"
+                app:layout_constraintHorizontal_bias="0.884"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/alertMessage"
                 app:layout_constraintVertical_bias="1.0" />

@@ -7,5 +7,5 @@
     <string name="email">Email</string>
     <string name="phone_no">Phone No.</string>
     <string name="signUp_suc">User Registered Successfully. Please verify your email and login</string>
-    <string name="emailNotVerified">Login Failed.User email is not verified. Please verify email and try again.</string>
+    <string name="emailNotVerified">Login Failed. User email is not verified. Please verify email and try again.</string>
 </resources>

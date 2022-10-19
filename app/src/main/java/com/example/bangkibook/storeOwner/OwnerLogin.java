@@ -72,32 +72,43 @@ public class OwnerLogin extends AppCompatActivity {
     private void loginUser(String txtEmail, String txtPassword) {
         //login using email and password
 
-            authProfile.signInWithEmailAndPassword(txtEmail,txtPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    FirebaseUser firebaseUser =authProfile.getCurrentUser();
-                    if(!firebaseUser.isEmailVerified()){
-                        progressBar.setVisibility(View.GONE);
-                        emailNotV_dialog();
-                    }else {
-                        if (task.isSuccessful()) {
+        authProfile.signInWithEmailAndPassword(txtEmail,txtPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful() ) {
+                        FirebaseUser firebaseUser =authProfile.getCurrentUser();
+                        if(firebaseUser.isEmailVerified()){
                             Toast.makeText(OwnerLogin.this, "You are logged in", Toast.LENGTH_SHORT).show();
                             Intent intentLogin = new Intent(getApplicationContext(), CustomerLists.class);
                             intentLogin.putExtra("uid", authProfile.getUid());
                             startActivity(intentLogin);
-                        } else {
-                            Toast.makeText(OwnerLogin.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }else{
+                            firebaseUser.sendEmailVerification();
+                            authProfile.signOut();
+                            emailNotV_dialog();
                         }
-                        progressBar.setVisibility(View.GONE);
-                    }
-                }
-            });
-        }
 
+                    } else if(task.getException().getMessage().contains("no user record")) {
+                        Toast.makeText(OwnerLogin.this, "User does not exist....", Toast.LENGTH_LONG).show();
+
+                    }else if(task.getException().getMessage().contains(" network error")){
+                        Toast.makeText(OwnerLogin.this, "Network error...", Toast.LENGTH_LONG).show();
+
+                    }else if(task.getException().getMessage().contains("password is invalid")){
+                        Toast.makeText(OwnerLogin.this, "Password is invalid....", Toast.LENGTH_LONG).show();
+
+                    }else{
+                        Toast.makeText(OwnerLogin.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                    progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
     public void signupClick(View view) {
         Intent intentSignup = new Intent(this, OwnerSignUp.class);
         startActivity(intentSignup);
-        // intent takes to signup activity
+
     }
 
     private void emailNotV_dialog() {
@@ -105,8 +116,10 @@ public class OwnerLogin extends AppCompatActivity {
         d.setContentView(R.layout.alert_dialog);
         d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         d.getWindow().getAttributes().windowAnimations = R.style.animation;
+        TextView title = d.findViewById(R.id.alertMessageTitle);
         TextView message = d.findViewById(R.id.alertMessage);
         message.setText(R.string.emailNotVerified);
+        title.setText("Email not verified");
 
         ImageView imageViewClose = d.findViewById(R.id.imageViewClose);
         imageViewClose.setOnClickListener(new View.OnClickListener() {
@@ -125,5 +138,4 @@ public class OwnerLogin extends AppCompatActivity {
         d.show();
     }
 }
-
 

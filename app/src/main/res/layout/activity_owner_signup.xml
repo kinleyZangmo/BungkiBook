@@ -74,7 +74,8 @@
         android:padding="10dp"
         android:textColorHint="@color/buttons"
         android:textSize="20sp"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        />
 
     <EditText
         android:id="@+id/confirm_password"
