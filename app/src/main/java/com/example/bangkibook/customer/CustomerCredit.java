@@ -42,7 +42,7 @@ public class CustomerCredit extends AppCompatActivity {
     CustomerDetailAdapter customerDetailAdapter;
     ArrayList<CustomerCreditDetails> list = new ArrayList<>();
 
-    public String nameV,amountV,emailV,phoneNoV;
+    public String nameV,amountV,emailV,phoneNoV,totalCreditV;
     EditText addC,clearC;
     Button add_btn,clear_btn;
 
@@ -78,7 +78,7 @@ public class CustomerCredit extends AppCompatActivity {
                     //retrieving for customer full profile too, here -kz
                     emailV=String.valueOf(dataSnapshot.child("email").getValue());
                     phoneNoV=String.valueOf(dataSnapshot.child("phoneNumber").getValue());
-
+                    totalCreditV=String.valueOf(dataSnapshot.child("credit").getValue());
 
                     name.setText(nameV);
                     amount.setText("Nu."+amountV);
@@ -278,11 +278,16 @@ public class CustomerCredit extends AppCompatActivity {
     }
 
     public void DisplayCustomerProfile(View view) {
+        Intent i = getIntent();
+        String uid = i.getStringExtra("uid");
+
         Intent customerProfile = new Intent(this, CustomerProfile.class);
         customerProfile.putExtra("cSid",stdId);
         customerProfile.putExtra("cName",nameV);
         customerProfile.putExtra("cEmail",emailV);
         customerProfile.putExtra("cPhoneNo",phoneNoV);
+        customerProfile.putExtra("cCredit",totalCreditV);
+
         startActivity(customerProfile);
     }
 }

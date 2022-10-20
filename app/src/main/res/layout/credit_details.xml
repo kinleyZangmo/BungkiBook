@@ -24,7 +24,6 @@
             android:layout_weight="1"
             android:gravity="left"
             android:text="amount"
-            android:textAlignment="viewStart"
             android:textColor="@color/titles" />
 
         <TextView
@@ -34,7 +33,6 @@
             android:layout_weight="1"
             android:gravity="left"
             android:text="remark"
-            android:textAlignment="viewStart"
             android:textColor="@color/titles" />
 
         <TextView

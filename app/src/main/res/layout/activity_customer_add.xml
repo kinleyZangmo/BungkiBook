@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".customer.CustomerAdd"
     android:layout_gravity="center"
-    android:background="@drawable/background">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/topic"
@@ -15,8 +15,8 @@
         android:layout_marginTop="48dp"
         android:text="@string/new_customer"
         android:textAlignment="center"
-        android:textColor="@color/titles"
-        android:textSize="35sp"
+        android:textColor="@color/black"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,11 +34,8 @@
         android:gravity="center_horizontal"
         android:hint="Name"
         android:maxWidth="37dp"
-        android:textColor="@color/titles"
-        android:textColorHint="@color/purple_500"
-        app:boxStrokeWidth="2dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/purple_500"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -50,7 +47,6 @@
         app:layout_constraintTop_toBottomOf="@+id/topic">
 
         <com.google.android.material.textfield.TextInputEditText
-
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,17 +55,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-
         android:id="@+id/idlayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="Student ID"
-        android:textColor="@color/titles"
-        android:textColorHint="@color/purple_500"
-        app:boxStrokeWidth="2dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/purple_500"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -96,11 +88,8 @@
         android:layout_marginTop="24dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textColor="@color/titles"
-        android:textColorHint="@color/purple_500"
-        app:boxStrokeWidth="2dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/purple_500"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -124,11 +113,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="Phone No."
-        android:textColor="@color/titles"
-        android:textColorHint="@color/purple_500"
-        app:boxStrokeWidth="2dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/purple_500"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -161,9 +147,8 @@
 
     <Button
         android:id="@+id/createC"
-        android:layout_width="wrap_content"
-        android:minWidth="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="329dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="44dp"
         android:background="@drawable/buttonradius"
         android:backgroundTint="@color/buttons"
