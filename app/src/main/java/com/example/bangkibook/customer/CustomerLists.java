@@ -20,6 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CustomerLists extends AppCompatActivity implements MyAdapter.CustomerClickListener {
     RecyclerView recyclerView;
@@ -53,6 +56,12 @@ public class CustomerLists extends AppCompatActivity implements MyAdapter.Custom
                     CustomerInfo customerInfo = dataSnapshot.getValue(CustomerInfo.class);
                     list.add(customerInfo);
                 }
+                Collections.sort(list, new Comparator<CustomerInfo>() {
+                    @Override
+                    public int compare(CustomerInfo c1, CustomerInfo c2) {
+                        return c1.Name.compareToIgnoreCase(c2.Name);
+                    }
+                });
                 myAdapter.notifyDataSetChanged();
             }
             @Override
