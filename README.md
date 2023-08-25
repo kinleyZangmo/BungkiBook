@@ -1,7 +1,3 @@
 # BungkiBook
 UI_version1
-Were you ever broke? 
-Had no money? 
-Well worry not my friends, 
-With our Bungki Book app just buy it in credit. 
-or in other words just take a bungki !!!!!!
+This system promotes utilization of personal finance and management of transaction between a college canteen owner and their customer. It helps the canteen owner to keep track of their customers credits account. The main user will be the canteen owners as it is difficult for them to write every credits in a log book and keep searching for the name of a specific customer when they want to clear the credit. The app works like a contact app where you add new contact but here we add it when a customer takes a credit from the shop. Under the customers name they can either add credit or clear credit. It also keep tracks of thier name, phone number, email and student index number. The search feature helps the owners to search customers with ease. The Customers will also get timely update of their credit when they take a credit and a notfication to clear their credit via email which enhances the customer-service provider relationship. Software used are andriod studio and Firebase for database.
